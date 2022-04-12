@@ -1,0 +1,21 @@
+.movie-card-container {
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.movie-card-container:hover {
+  transform: scale(1.05);
+}
+
+.movie-card-image {
+  width: 250px;
+  border-radius: 2px;
+}
+
+.movie-card-title {
+  font-size: 1.2rem;
+  margin-top: 10px;
+  font-family: "roboto";
+  font-weight: 500;
+}

@@ -2,3 +2,15 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.center {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.card-list-container {
+  padding: 15px;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}

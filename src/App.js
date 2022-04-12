@@ -1,23 +1,27 @@
 import './App.css'
+import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchMovies } from './store/actions/moviesActions'
+import MovieCard from './components/MovieCard/MovieCard'
 
 function App() {
   const data = useSelector(state => state.movies.topMovies)
   const dispatch = useDispatch()
+  console.log(data)
 
-  const movie = {
-    title: "Redux action is working!"
-  }
-
-  const updateStateHandler = () => {
-    dispatch(fetchMovies(movie))
-  }
+  useEffect(() => {
+    dispatch(fetchMovies())
+  }, [dispatch])
 
   return (
     <div className="App">
-      <h1>{data[0].title}</h1>
-      <button onClick={updateStateHandler}>Update State</button>
+      <div className='card-list-container center'>
+        {
+          data.map(movie => (
+            <MovieCard key={movie.id} movie={movie} />
+          ))
+        }
+      </div>
     </div>
   );
 }
