@@ -1,0 +1,47 @@
+.preview-container {
+  min-height: calc(100vh - 110.88px);
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: flex-end;
+  padding: 5px 15px;
+}
+
+.preview-text-container {
+  margin-bottom: 20px;
+}
+
+.preview-btn,
+.preview-title-container {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  margin: 10px 20vh;
+}
+
+.preview-btn {
+  font-family: "roboto";
+  font-size: large;
+  border: none;
+  color: white;
+  padding: 1rem 2rem;
+  cursor: pointer;
+}
+
+.preview-title-container {
+  padding: 1rem 2rem;
+}
+
+.preview-title,
+.preview-overview {
+  color: white;
+  font-family: "roboto";
+}
+
+.preview-title {
+  font-size: xx-large;
+}
+
+.preview-overview {
+  font-style: italic;
+  font-size: medium;
+}

@@ -1,0 +1,43 @@
+.header-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10%;
+  background-color: #212121;
+}
+
+.header-title {
+  font-family: "roboto";
+  padding: 15px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.header-title:hover {
+  transform: scale(1.1);
+}
+
+.header-input-container {
+}
+
+.header-input {
+  font-family: "roboto";
+  padding: 10px 8px;
+  font-size: 18px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+
+.header-btn {
+  border: none;
+  border-radius: 3px;
+  padding: 5px 20px;
+  background-color: inherit;
+  color: white;
+  cursor: pointer;
+  font-family: "roboto";
+  font-size: 18px;
+}
