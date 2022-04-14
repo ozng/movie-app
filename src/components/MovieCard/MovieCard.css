@@ -2,6 +2,10 @@
   width: 100%;
   cursor: pointer;
   transition: all 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .movie-card-container:hover {
@@ -9,7 +13,7 @@
 }
 
 .movie-card-image {
-  width: 250px;
+  width: 100%;
   border-radius: 2px;
 }
 
@@ -18,4 +22,5 @@
   margin-top: 10px;
   font-family: "roboto";
   font-weight: 500;
+  color: white;
 }

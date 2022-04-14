@@ -19,12 +19,9 @@
   transform: scale(1.1);
 }
 
-.header-input-container {
-}
-
 .header-input {
   font-family: "roboto";
-  padding: 10px 8px;
+  padding: 8px;
   font-size: 18px;
   border-radius: 10px;
   border: none;

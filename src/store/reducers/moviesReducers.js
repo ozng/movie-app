@@ -1,9 +1,10 @@
-import { FETCH_TOP_MOVIES, RESET_SEARCH, SEARCH_MOVIES, SET_SELECTED_MOVIES } from '../actions/moviesActions'
+import { FETCH_TOP_MOVIES, FETCH_VIDEOS, RESET_SEARCH, SEARCH_MOVIES, SET_SELECTED_MOVIES } from '../actions/moviesActions'
 
 const initialState = {
     topMovies: [],
     selectedMovie: [],
-    searchedMovies: []
+    searchedMovies: [],
+    selectedMovieVideos: []
 }
 
 const moviesReducers = (state = initialState, action) => {
@@ -31,6 +32,11 @@ const moviesReducers = (state = initialState, action) => {
                 ...state,
                 selectedMovie: state.topMovies[0],
                 searchedMovies: []
+            }
+        case FETCH_VIDEOS:
+            return {
+                ...state,
+                selectedMovieVideos: action.payload
             }
         default:
             return state

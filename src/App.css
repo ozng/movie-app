@@ -3,14 +3,20 @@ body {
   padding: 0;
 }
 
+.App {
+  background-color: #313131;
+}
+
 .center {
-  max-width: 1000px;
+  max-width: 70%;
   margin: 0 auto;
 }
 
 .card-list-container {
-  padding: 15px;
+  padding: 50px;
   display: grid;
-  gap: 20px;
+  gap: 30px;
+  row-gap: 20px;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  background-color: #111111;
 }
