@@ -4,7 +4,7 @@ const initialState = {
     topMovies: [],
     selectedMovie: [],
     searchedMovies: [],
-    selectedMovieVideos: []
+    selectedMovieVideos: [],
 }
 
 const moviesReducers = (state = initialState, action) => {
@@ -36,7 +36,7 @@ const moviesReducers = (state = initialState, action) => {
         case FETCH_VIDEOS:
             return {
                 ...state,
-                selectedMovieVideos: action.payload
+                selectedMovieVideos: action.payload,
             }
         default:
             return state

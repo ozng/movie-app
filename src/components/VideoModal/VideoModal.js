@@ -5,12 +5,10 @@ import { youtubeURL } from '../../services/constans/api'
 
 export default function VideoModal({ visible, setVisible }) {
   const trailer = useSelector(state => state.movies.selectedMovieVideos)
+  const filteredTrailers = trailer.filter(video => video.type === "Trailer")
+
   return (
     <div className='video-modal-container' style={{ ...visible }}>
-      <ReactPlayer
-        url={`${youtubeURL}${trailer.length > 0 ? trailer[0].key : "NpEaa2P7qZI"}`}
-        controls={true}
-      />
       <button
         className='video-modal-btn'
         onClick={() => setVisible({
@@ -19,6 +17,10 @@ export default function VideoModal({ visible, setVisible }) {
         })}>
         Kapat
       </button>
+      <ReactPlayer
+        url={`${youtubeURL}${trailer.length > 0 ? filteredTrailers[0].key : "NpEaa2P7qZI"}`}
+        controls={true}
+      />
     </div>
   )
 }
