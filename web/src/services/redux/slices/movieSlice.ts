@@ -3,26 +3,23 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 export interface MovieState {
-  popularMovies: Movie[] | [];
+  nowPlaying: Movie[] | [];
 }
 
 const initialState: MovieState = {
-  popularMovies: [{ id: "1", title: "Lord of the rings" }],
+  nowPlaying: [],
 };
 
 export const movieSlice = createSlice({
   name: "movie",
   initialState,
   reducers: {
-    setPopularMovies: (state, action: PayloadAction<Movie[] | []>) => {
-      state.popularMovies = action.payload;
-    },
-    add: (state, action: PayloadAction<Movie>) => {
-      state.popularMovies = [...state.popularMovies, action.payload];
+    setNowPlaying: (state, action: PayloadAction<Movie[] | []>) => {
+      state.nowPlaying = action.payload;
     },
   },
 });
 
-export const { setPopularMovies, add } = movieSlice.actions;
+export const { setNowPlaying } = movieSlice.actions;
 
 export default movieSlice.reducer;
