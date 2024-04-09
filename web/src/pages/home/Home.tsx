@@ -1,16 +1,11 @@
 import { setNowPlaying } from "@/services/redux/slices/movieSlice";
-import { RootState } from "@/services/redux/store";
 import { fetchNowPlaying } from "@/services/tmdb/movies";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import NowPlayingCarousel from "./components/NowPlayingCarousel";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const nowPlayingMoviesState = useSelector(
-    (state: RootState) => state.movie.nowPlaying
-  );
-
-  console.log(nowPlayingMoviesState);
 
   useEffect(() => {
     const fetchMoviesHandler = async () => {
@@ -22,12 +17,10 @@ const Home = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      {nowPlayingMoviesState?.map((item) => (
-        <div>
-          <h2>{item.title}</h2>
-        </div>
-      ))}
+    <div className="flex flex-col gap-4 mt-4">
+      <div className="w-[60%] mx-auto">
+        <NowPlayingCarousel />
+      </div>
     </div>
   );
 };
