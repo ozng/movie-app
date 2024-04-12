@@ -17,10 +17,10 @@ const NowPlayingCarousel = () => {
   const resolution = "/original";
 
   return (
-    <Carousel>
+    <Carousel className="">
       <CarouselContent>
         {nowPlayingMoviesState.map((item) => (
-          <CarouselItem key={item.id} className="cursor-pointer group">
+          <CarouselItem key={item.id} className="cursor-pointer group ">
             <div className="relative">
               <img
                 src={`${IMAGE_URL}${resolution}${item.backdrop_path}`}
@@ -37,7 +37,7 @@ const NowPlayingCarousel = () => {
                   className="w-20"
                 />
                 <div className=" flex flex-col gap-4 pb-4 pl-1">
-                  <h2 className="text-4xl text-dark-title">{item.title}</h2>
+                  <h2 className="text-3xl text-dark-title">{item.title}</h2>
                   <p className="text-xs tracking-tight font-medium text-dark-paragraph max-w-[90%] line-clamp-2">
                     {item.overview}
                   </p>

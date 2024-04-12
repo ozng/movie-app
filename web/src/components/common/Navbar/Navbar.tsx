@@ -3,7 +3,7 @@ import UserAvatar from "./components/UserAvatar";
 
 const Navbar = () => {
   return (
-    <nav className="bg-light-background dark:bg-dark-background border-b">
+    <nav className="bg-transparent fixed z-50 w-full">
       <div className="container flex items-center justify-between py-2">
         <NavbarLogo />
         <UserAvatar />

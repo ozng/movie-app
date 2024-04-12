@@ -2,7 +2,7 @@ import { setNowPlaying } from "@/services/redux/slices/movieSlice";
 import { fetchNowPlaying } from "@/services/tmdb/movies";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import NowPlayingCarousel from "./components/NowPlayingCarousel";
+import Hero from "./components/Hero";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -17,9 +17,9 @@ const Home = () => {
   }, [dispatch]);
 
   return (
-    <div className="flex flex-col gap-4 mt-4">
-      <div className="w-[60%] mx-auto">
-        <NowPlayingCarousel />
+    <div className="">
+      <div className="relative">
+        <Hero />
       </div>
     </div>
   );
