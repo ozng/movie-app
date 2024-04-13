@@ -1,15 +1,19 @@
 import Movie from "@/models/Movie";
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchNowPlayingMovies } from "../actions/movies";
+import { fetchNowPlayingMovies, fetchPopularMovies } from "../actions/movies";
 
 export interface MovieState {
   nowPlaying: Movie[] | [];
   loadingNowPlaying: boolean;
+  popular: Movie[] | [];
+  loadingPopular: boolean;
 }
 
 const initialState: MovieState = {
   nowPlaying: [],
   loadingNowPlaying: false,
+  popular: [],
+  loadingPopular: false,
 };
 
 export const movieSlice = createSlice({
@@ -27,6 +31,17 @@ export const movieSlice = createSlice({
     builder.addCase(fetchNowPlayingMovies.rejected, (state) => {
       state.loadingNowPlaying = false;
       state.nowPlaying = [];
+    });
+    builder.addCase(fetchPopularMovies.pending, (state) => {
+      state.loadingPopular = true;
+    });
+    builder.addCase(fetchPopularMovies.fulfilled, (state, action) => {
+      state.popular = action.payload;
+      state.loadingPopular = false;
+    });
+    builder.addCase(fetchPopularMovies.rejected, (state) => {
+      state.loadingPopular = false;
+      state.popular = [];
     });
   },
 });

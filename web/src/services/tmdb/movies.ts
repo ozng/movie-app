@@ -11,3 +11,13 @@ export const fetchNowPlaying: FetchNowPlaying = async () => {
 
   return data.results ? data.results : [];
 };
+
+type FetchPopular = () => Promise<Movie[] | []>;
+
+export const fetchPopular: FetchPopular = async () => {
+  const { data } = await axios.get(`${BASE_URL}${MOVIE_URL}/popular`, {
+    params: { api_key: API_KEY },
+  });
+
+  return data.results ? data.results : [];
+};
