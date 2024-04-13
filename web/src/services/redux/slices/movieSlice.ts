@@ -1,25 +1,34 @@
 import Movie from "@/models/Movie";
 import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
+import { fetchNowPlayingMovies } from "../actions/movies";
 
 export interface MovieState {
   nowPlaying: Movie[] | [];
+  loadingNowPlaying: boolean;
 }
 
 const initialState: MovieState = {
   nowPlaying: [],
+  loadingNowPlaying: false,
 };
 
 export const movieSlice = createSlice({
   name: "movie",
   initialState,
-  reducers: {
-    setNowPlaying: (state, action: PayloadAction<Movie[] | []>) => {
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(fetchNowPlayingMovies.pending, (state) => {
+      state.loadingNowPlaying = true;
+    });
+    builder.addCase(fetchNowPlayingMovies.fulfilled, (state, action) => {
       state.nowPlaying = action.payload;
-    },
+      state.loadingNowPlaying = false;
+    });
+    builder.addCase(fetchNowPlayingMovies.rejected, (state) => {
+      state.loadingNowPlaying = false;
+      state.nowPlaying = [];
+    });
   },
 });
-
-export const { setNowPlaying } = movieSlice.actions;
 
 export default movieSlice.reducer;

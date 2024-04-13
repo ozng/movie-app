@@ -1,19 +1,13 @@
-import { setNowPlaying } from "@/services/redux/slices/movieSlice";
-import { fetchNowPlaying } from "@/services/tmdb/movies";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
 import Hero from "./components/Hero";
+import { fetchNowPlayingMovies } from "@/services/redux/actions/movies";
+import { useAppDispatch } from "@/services/redux/store";
 
 const Home = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    const fetchMoviesHandler = async () => {
-      const nowPlayingMoviesTMDB = await fetchNowPlaying();
-      dispatch(setNowPlaying(nowPlayingMoviesTMDB));
-    };
-
-    fetchMoviesHandler();
+    dispatch(fetchNowPlayingMovies());
   }, [dispatch]);
 
   return (
