@@ -31,3 +31,13 @@ export const fetchTopRated: FetchTopRated = async () => {
 
   return data.results ? data.results : [];
 };
+
+type FetchUpcoming = () => Promise<Movie[] | []>;
+
+export const fetchUpcoming: FetchUpcoming = async () => {
+  const { data } = await axios.get(`${BASE_URL}${MOVIE_URL}/upcoming`, {
+    params: { api_key: API_KEY },
+  });
+
+  return data.results ? data.results : [];
+};

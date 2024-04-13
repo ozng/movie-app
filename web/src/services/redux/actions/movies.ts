@@ -2,6 +2,7 @@ import {
   fetchNowPlaying,
   fetchPopular,
   fetchTopRated,
+  fetchUpcoming,
 } from "@/services/tmdb/movies";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
@@ -25,6 +26,14 @@ export const fetchTopRatedMovies = createAsyncThunk(
   "movie/fetchTopRatedMovies",
   async () => {
     const response = await fetchTopRated();
+    return response;
+  }
+);
+
+export const fetchUpcomingMovies = createAsyncThunk(
+  "movie/fetchUpcomingMovies",
+  async () => {
+    const response = await fetchUpcoming();
     return response;
   }
 );

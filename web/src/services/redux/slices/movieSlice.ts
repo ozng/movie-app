@@ -4,6 +4,7 @@ import {
   fetchNowPlayingMovies,
   fetchPopularMovies,
   fetchTopRatedMovies,
+  fetchUpcomingMovies,
 } from "../actions/movies";
 
 export interface MovieState {
@@ -13,6 +14,8 @@ export interface MovieState {
   loadingPopular: boolean;
   topRated: Movie[] | [];
   loadingTopRated: boolean;
+  upcoming: Movie[] | [];
+  loadingUpcoming: boolean;
 }
 
 const initialState: MovieState = {
@@ -22,6 +25,8 @@ const initialState: MovieState = {
   loadingPopular: false,
   topRated: [],
   loadingTopRated: false,
+  upcoming: [],
+  loadingUpcoming: false,
 };
 
 export const movieSlice = createSlice({
@@ -61,6 +66,17 @@ export const movieSlice = createSlice({
     builder.addCase(fetchTopRatedMovies.rejected, (state) => {
       state.loadingTopRated = false;
       state.topRated = [];
+    });
+    builder.addCase(fetchUpcomingMovies.pending, (state) => {
+      state.loadingUpcoming = true;
+    });
+    builder.addCase(fetchUpcomingMovies.fulfilled, (state, action) => {
+      state.upcoming = action.payload;
+      state.loadingUpcoming = false;
+    });
+    builder.addCase(fetchUpcomingMovies.rejected, (state) => {
+      state.loadingUpcoming = false;
+      state.upcoming = [];
     });
   },
 });
