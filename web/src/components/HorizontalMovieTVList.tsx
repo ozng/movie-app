@@ -40,7 +40,7 @@ const HorizontalMovieTVList = ({ title, list }: HorizontalMovieTVListProps) => {
         </div>
       </div>
       <div className="overflow-scroll no-scrollbar" ref={listRef}>
-        <div className="flex gap-6 w-max py-6 pl-4">
+        <div className="flex gap-6 w-max py-6 px-4">
           {list && list.length > 0
             ? list.map((item) => (
                 <HorizontalMovieTVCard key={item.id} movieOrTV={item} />

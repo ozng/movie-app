@@ -21,3 +21,13 @@ export const fetchPopular: FetchPopular = async () => {
 
   return data.results ? data.results : [];
 };
+
+type FetchTopRated = () => Promise<Movie[] | []>;
+
+export const fetchTopRated: FetchTopRated = async () => {
+  const { data } = await axios.get(`${BASE_URL}${MOVIE_URL}/top_rated`, {
+    params: { api_key: API_KEY },
+  });
+
+  return data.results ? data.results : [];
+};

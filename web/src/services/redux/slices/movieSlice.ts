@@ -1,12 +1,18 @@
 import Movie from "@/models/Movie";
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchNowPlayingMovies, fetchPopularMovies } from "../actions/movies";
+import {
+  fetchNowPlayingMovies,
+  fetchPopularMovies,
+  fetchTopRatedMovies,
+} from "../actions/movies";
 
 export interface MovieState {
   nowPlaying: Movie[] | [];
   loadingNowPlaying: boolean;
   popular: Movie[] | [];
   loadingPopular: boolean;
+  topRated: Movie[] | [];
+  loadingTopRated: boolean;
 }
 
 const initialState: MovieState = {
@@ -14,6 +20,8 @@ const initialState: MovieState = {
   loadingNowPlaying: false,
   popular: [],
   loadingPopular: false,
+  topRated: [],
+  loadingTopRated: false,
 };
 
 export const movieSlice = createSlice({
@@ -42,6 +50,17 @@ export const movieSlice = createSlice({
     builder.addCase(fetchPopularMovies.rejected, (state) => {
       state.loadingPopular = false;
       state.popular = [];
+    });
+    builder.addCase(fetchTopRatedMovies.pending, (state) => {
+      state.loadingTopRated = true;
+    });
+    builder.addCase(fetchTopRatedMovies.fulfilled, (state, action) => {
+      state.topRated = action.payload;
+      state.loadingTopRated = false;
+    });
+    builder.addCase(fetchTopRatedMovies.rejected, (state) => {
+      state.loadingTopRated = false;
+      state.topRated = [];
     });
   },
 });
