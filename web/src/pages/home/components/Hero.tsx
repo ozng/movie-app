@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import HeroInfo from "./HeroInfo";
 import HeroMovieList from "./HeroMovieList";
 import { autoPlay } from "@/utils/autoPlayImages";
+import HeroSkeleton from "@/components/skeletons/HeroSkeleton";
 
 export const resolution = "/original";
 
@@ -13,19 +14,18 @@ export const imageBase = IMAGE_URL + resolution;
 const Hero = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const nowPlayingMoviesState = useSelector(
-    (state: RootState) => state.movie.nowPlaying
+  const { nowPlaying, loadingNowPlaying } = useSelector(
+    (state: RootState) => state.movie
   );
 
-  const imageURL =
-    imageBase + nowPlayingMoviesState[selectedImageIndex]?.backdrop_path;
+  const imageURL = imageBase + nowPlaying[selectedImageIndex]?.backdrop_path;
 
-  const selectedMovie = nowPlayingMoviesState[selectedImageIndex];
+  const selectedMovie = nowPlaying[selectedImageIndex];
 
   useEffect(() => {
     const startAutoPlay = setInterval(() => {
       setSelectedImageIndex((prevState) =>
-        autoPlay("forward", nowPlayingMoviesState.length - 1, prevState)
+        autoPlay("forward", nowPlaying.length - 1, prevState)
       );
     }, 4000);
 
@@ -34,9 +34,11 @@ const Hero = () => {
     }
 
     return () => clearInterval(startAutoPlay);
-  }, [isAutoPlaying, nowPlayingMoviesState.length]);
+  }, [isAutoPlaying, nowPlaying.length]);
 
-  return (
+  return loadingNowPlaying ? (
+    <HeroSkeleton />
+  ) : (
     <div
       className={`min-h-screen w-full text-light-background flex flex-col justify-between`}
       style={{

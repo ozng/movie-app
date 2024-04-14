@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import Hero from "./components/Hero";
 import {
   fetchNowPlayingMovies,
   fetchPopularMovies,
@@ -11,6 +10,7 @@ import PopularMovies from "./components/PopularMovies";
 import TopRatedMovies from "./components/TopRatedMovies";
 import UpcomingMovies from "./components/UpcomingMovies";
 import Container from "@/components/Container";
+import Hero from "./components/Hero";
 
 const Home = () => {
   const dispatch = useAppDispatch();
