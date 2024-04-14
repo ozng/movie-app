@@ -10,6 +10,7 @@ import { useAppDispatch } from "@/services/redux/store";
 import PopularMovies from "./components/PopularMovies";
 import TopRatedMovies from "./components/TopRatedMovies";
 import UpcomingMovies from "./components/UpcomingMovies";
+import Container from "@/components/Container";
 
 const Home = () => {
   const dispatch = useAppDispatch();
@@ -24,9 +25,11 @@ const Home = () => {
   return (
     <div className="relative flex flex-col gap-12">
       <Hero />
-      <PopularMovies />
-      <TopRatedMovies />
-      <UpcomingMovies />
+      <Container className="flex flex-col gap-12">
+        <PopularMovies />
+        <TopRatedMovies />
+        <UpcomingMovies />
+      </Container>
     </div>
   );
 };

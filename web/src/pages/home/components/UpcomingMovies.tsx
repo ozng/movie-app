@@ -8,9 +8,7 @@ const UpcomingMovies = () => {
   );
 
   return (
-    <div className="container">
-      <HorizontalMovieTVList title="Upcoming Movies" list={upcomingMovies} />
-    </div>
+    <HorizontalMovieTVList title="Upcoming Movies" list={upcomingMovies} />
   );
 };
 

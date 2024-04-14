@@ -8,9 +8,7 @@ const TopRatedMovies = () => {
   );
 
   return (
-    <div className="container">
-      <HorizontalMovieTVList title="Top Rated Movies" list={topRatedMovies} />
-    </div>
+    <HorizontalMovieTVList title="Top Rated Movies" list={topRatedMovies} />
   );
 };
 
