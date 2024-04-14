@@ -1,5 +1,6 @@
 import { footer } from "@/static/footer";
 import FooterListItem from "./FooterListItem";
+import { Title } from "@/components/ui/typography/title";
 
 type FooterListProps = {
   title: string;
@@ -9,7 +10,9 @@ type FooterListProps = {
 const FooterList = ({ title, list }: FooterListProps) => {
   return (
     <div>
-      <h2 className="font-semibold mb-2">{title}</h2>
+      <Title thickness={"semibold"} className="mb-2">
+        {title}
+      </Title>
       <ul className="flex flex-col gap-1">
         {list.map((item) => (
           <FooterListItem key={item.id} label={item.label} link={item.link} />
