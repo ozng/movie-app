@@ -1,6 +1,8 @@
 import { IMAGE_URL } from "@/constants/tmdb";
 import Movie from "@/models/Movie";
 import { IoIosStar } from "react-icons/io";
+import { Title } from "../ui/typography/title";
+import { Type } from "../ui/typography/type";
 
 type HorizontalMovieTVCardProps = {
   movieOrTV: Movie;
@@ -19,14 +21,14 @@ const HorizontalMovieTVCard = ({ movieOrTV }: HorizontalMovieTVCardProps) => {
       />
       <div className="grid grid-cols-4 gap-2">
         <div className="col-span-3">
-          <h2 className="text-sm font-semibold tracking-tight">
+          <Title size={"sm"} thickness={"semibold"} className="tracking-tight">
             {movieOrTV.title}
-          </h2>
+          </Title>
         </div>
         <div className="flex items-start justify-end gap-2 text-faded-2 text-sm font-semibold col-span-1">
           <div className="flex items-center gap-2">
             <IoIosStar className="text-accent" size={16} />
-            <span>{movieOrTV.vote_average.toFixed(1)}</span>
+            <Type>{movieOrTV.vote_average.toFixed(1)}</Type>
           </div>
         </div>
       </div>

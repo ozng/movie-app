@@ -4,6 +4,7 @@ import { Button } from "./ui/button";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 import { useRef } from "react";
 import { scrollHandler } from "@/utils/scroll";
+import { Title } from "./ui/typography/title";
 
 type HorizontalMovieTVListProps = {
   title: string;
@@ -16,14 +17,16 @@ const HorizontalMovieTVList = ({ title, list }: HorizontalMovieTVListProps) => {
   return (
     <div className="flex flex-col">
       <div className="flex items-center gap-4">
-        <h2 className="text-xl font-semibold tracking-tight ">{title}</h2>
+        <Title size={"xl"} thickness={"semibold"} className="tracking-tight">
+          {title}
+        </Title>
         <div className="flex gap-4 ">
           <div className="rounded-md group">
             <Button
               variant={"ghost"}
               onClick={() => scrollHandler("left", listRef)}
             >
-              <FaAngleLeft className="" size={21} />
+              <FaAngleLeft size={21} />
             </Button>
           </div>
           <div className="rounded-md group">
@@ -31,7 +34,7 @@ const HorizontalMovieTVList = ({ title, list }: HorizontalMovieTVListProps) => {
               variant={"ghost"}
               onClick={() => scrollHandler("right", listRef)}
             >
-              <FaAngleRight className=" " size={21} />
+              <FaAngleRight size={21} />
             </Button>
           </div>
         </div>
