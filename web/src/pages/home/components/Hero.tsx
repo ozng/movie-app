@@ -12,6 +12,7 @@ export const imageBase = IMAGE_URL + resolution;
 
 const Hero = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const nowPlayingMoviesState = useSelector(
     (state: RootState) => state.movie.nowPlaying
   );
@@ -22,14 +23,18 @@ const Hero = () => {
   const selectedMovie = nowPlayingMoviesState[selectedImageIndex];
 
   useEffect(() => {
-    const autoplay = setInterval(() => {
+    const startAutoPlay = setInterval(() => {
       setSelectedImageIndex((prevState) =>
         autoPlay("forward", nowPlayingMoviesState.length - 1, prevState)
       );
     }, 4000);
 
-    return () => clearInterval(autoplay);
-  });
+    if (!isAutoPlaying) {
+      clearInterval(startAutoPlay);
+    }
+
+    return () => clearInterval(startAutoPlay);
+  }, [isAutoPlaying, nowPlayingMoviesState.length]);
 
   return (
     <div
@@ -44,6 +49,8 @@ const Hero = () => {
       <HeroMovieList
         selectedImageIndex={selectedImageIndex}
         setSelectedImageIndex={setSelectedImageIndex}
+        isAutoPlaying={isAutoPlaying}
+        setIsAutoPlaying={setIsAutoPlaying}
       />
     </div>
   );
