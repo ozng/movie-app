@@ -1,11 +1,18 @@
 import HorizontalMovieTVList from "@/components/HorizontalMovieTVList";
+import HorizontalMovieTVListSkeleton from "@/components/skeletons/HorizontalMovieTVListSkeleton";
 import { RootState } from "@/services/redux/store";
 import { useSelector } from "react-redux";
 
 const PopularMovies = () => {
-  const popularMovies = useSelector((state: RootState) => state.movie.popular);
+  const { popular, loadingPopular } = useSelector(
+    (state: RootState) => state.movie
+  );
 
-  return <HorizontalMovieTVList title="Popular Movies" list={popularMovies} />;
+  return loadingPopular ? (
+    <HorizontalMovieTVListSkeleton />
+  ) : (
+    <HorizontalMovieTVList title="Popular Movies" list={popular} />
+  );
 };
 
 export default PopularMovies;

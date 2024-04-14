@@ -1,14 +1,17 @@
 import HorizontalMovieTVList from "@/components/HorizontalMovieTVList";
+import HorizontalMovieTVListSkeleton from "@/components/skeletons/HorizontalMovieTVListSkeleton";
 import { RootState } from "@/services/redux/store";
 import { useSelector } from "react-redux";
 
 const TopRatedMovies = () => {
-  const topRatedMovies = useSelector(
-    (state: RootState) => state.movie.topRated
+  const { topRated, loadingTopRated } = useSelector(
+    (state: RootState) => state.movie
   );
 
-  return (
-    <HorizontalMovieTVList title="Top Rated Movies" list={topRatedMovies} />
+  return loadingTopRated ? (
+    <HorizontalMovieTVListSkeleton />
+  ) : (
+    <HorizontalMovieTVList title="Top Rated Movies" list={topRated} />
   );
 };
 
