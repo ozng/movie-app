@@ -12,6 +12,7 @@ const titleVariants = cva("", {
       "fade-2": "text-faded-2",
       "fade-3": "text-faded-3",
       accent: "text-accent",
+      link: "cursor-pointer hover:underline hover:underline-offset-1 hover:text-accent duration-100",
     },
     size: {
       default: "",
