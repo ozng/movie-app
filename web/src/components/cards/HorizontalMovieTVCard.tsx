@@ -3,6 +3,7 @@ import Movie from "@/models/Movie";
 import { IoIosStar } from "react-icons/io";
 import { Title } from "../ui/typography/title";
 import { Type } from "../ui/typography/type";
+import { Link } from "react-router-dom";
 
 type HorizontalMovieTVCardProps = {
   movieOrTV: Movie;
@@ -13,7 +14,10 @@ const HorizontalMovieTVCard = ({ movieOrTV }: HorizontalMovieTVCardProps) => {
   const imageBase = IMAGE_URL + resolution;
 
   return (
-    <div className="w-48 flex flex-col gap-2 cursor-pointer hover:scale-105 duration-200">
+    <Link
+      to={`/detail/${movieOrTV.id}`}
+      className="w-48 flex flex-col gap-2 cursor-pointer hover:scale-105 duration-200"
+    >
       <img
         src={imageBase + movieOrTV.poster_path}
         alt="poster"
@@ -32,7 +36,7 @@ const HorizontalMovieTVCard = ({ movieOrTV }: HorizontalMovieTVCardProps) => {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
