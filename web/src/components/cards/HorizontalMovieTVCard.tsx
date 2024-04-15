@@ -1,5 +1,5 @@
 import { IMAGE_URL } from "@/constants/tmdb";
-import Movie from "@/models/Movie";
+import { Movie } from "@/models/Movie";
 import { IoIosStar } from "react-icons/io";
 import { Title } from "../ui/typography/title";
 import { Type } from "../ui/typography/type";

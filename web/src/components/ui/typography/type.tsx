@@ -8,11 +8,11 @@ const typeVariants = cva("", {
     variant: {
       default: "text-light-paragraph dark:text-dark-paragraph",
       light: "text-dark-title dark:text-light-title",
-
       "fade-1": "text-faded-1",
       "fade-2": "text-faded-2",
       "fade-3": "text-faded-3",
       accent: "text-accent",
+      error: "text-red-500",
     },
     size: {
       default: "",

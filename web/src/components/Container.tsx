@@ -4,7 +4,7 @@ interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const Container = ({ children, ...props }: ContainerProps) => {
   return (
-    <div className="px-24">
+    <div className="px-36">
       <div {...props}>{children}</div>
     </div>
   );

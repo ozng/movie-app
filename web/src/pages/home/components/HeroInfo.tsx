@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Title } from "@/components/ui/typography/title";
 import { Type } from "@/components/ui/typography/type";
-import Movie from "@/models/Movie";
+import { Movie } from "@/models/Movie";
 import moment from "moment";
 
 type HeroInfoProps = {

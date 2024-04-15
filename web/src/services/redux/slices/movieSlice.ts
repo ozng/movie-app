@@ -1,6 +1,7 @@
-import Movie from "@/models/Movie";
+import { Movie, MovieDetail } from "@/models/Movie";
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  fetchMovieDetail,
   fetchNowPlayingMovies,
   fetchPopularMovies,
   fetchTopRatedMovies,
@@ -16,6 +17,8 @@ export interface MovieState {
   loadingTopRated: boolean;
   upcoming: Movie[] | [];
   loadingUpcoming: boolean;
+  movieDetail: MovieDetail | null;
+  loadingMovieDetail: boolean;
 }
 
 const initialState: MovieState = {
@@ -27,12 +30,18 @@ const initialState: MovieState = {
   loadingTopRated: false,
   upcoming: [],
   loadingUpcoming: false,
+  movieDetail: null,
+  loadingMovieDetail: false,
 };
 
 export const movieSlice = createSlice({
   name: "movie",
   initialState,
-  reducers: {},
+  reducers: {
+    resetMovieDetail: (state) => {
+      state.movieDetail = null;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchNowPlayingMovies.pending, (state) => {
       state.loadingNowPlaying = true;
@@ -78,7 +87,20 @@ export const movieSlice = createSlice({
       state.loadingUpcoming = false;
       state.upcoming = [];
     });
+    builder.addCase(fetchMovieDetail.pending, (state) => {
+      state.loadingMovieDetail = true;
+    });
+    builder.addCase(fetchMovieDetail.fulfilled, (state, action) => {
+      state.movieDetail = action.payload;
+      state.loadingMovieDetail = false;
+    });
+    builder.addCase(fetchMovieDetail.rejected, (state) => {
+      state.loadingMovieDetail = false;
+      state.movieDetail = null;
+    });
   },
 });
+
+export const { resetMovieDetail } = movieSlice.actions;
 
 export default movieSlice.reducer;

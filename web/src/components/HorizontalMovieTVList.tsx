@@ -1,4 +1,4 @@
-import Movie from "@/models/Movie";
+import { Movie } from "@/models/Movie";
 import HorizontalMovieTVCard from "./cards/HorizontalMovieTVCard";
 import { Button } from "./ui/button";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";

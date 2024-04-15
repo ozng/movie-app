@@ -1,5 +1,5 @@
 import { API_KEY, BASE_URL, MOVIE_URL } from "@/constants/tmdb";
-import Movie from "@/models/Movie";
+import { Movie, MovieDetail } from "@/models/Movie";
 import axios from "axios";
 
 type FetchNowPlaying = () => Promise<Movie[] | []>;
@@ -40,4 +40,14 @@ export const fetchUpcoming: FetchUpcoming = async () => {
   });
 
   return data.results ? data.results : [];
+};
+
+type FetchDetail = (id: string) => Promise<MovieDetail>;
+
+export const fetchDetail: FetchDetail = async (id) => {
+  const { data } = await axios.get(`${BASE_URL}${MOVIE_URL}/${id}`, {
+    params: { api_key: API_KEY },
+  });
+
+  return data;
 };
