@@ -3,9 +3,10 @@ import { Title } from "@/components/ui/typography/title";
 import { Type } from "@/components/ui/typography/type";
 import { Movie } from "@/models/Movie";
 import moment from "moment";
+import { Link } from "react-router-dom";
 
 type HeroInfoProps = {
-  selectedMovie?: Movie;
+  selectedMovie: Movie;
 };
 
 const HeroInfo = ({ selectedMovie }: HeroInfoProps) => {
@@ -36,7 +37,9 @@ const HeroInfo = ({ selectedMovie }: HeroInfoProps) => {
       </Type>
       <div className="flex gap-6">
         <Button>Watch Trailer</Button>
-        <Button variant={"secondary"}>Detail</Button>
+        <Button variant={"secondary"}>
+          <Link to={`/detail/${selectedMovie?.id}`}>Detail</Link>
+        </Button>
       </div>
     </div>
   );

@@ -7,6 +7,8 @@ import { useParams } from "react-router-dom";
 import DetailPoster from "./components/DetailPoster";
 import DetailInformation from "./components/DetailInformation";
 import { resetMovieDetail } from "@/services/redux/slices/movieSlice";
+import { fetchCastAndCrewsFromSelectedMovie } from "@/services/redux/actions/people";
+import { resetCredit } from "@/services/redux/slices/peopleSlice";
 
 const Detail = () => {
   const { id } = useParams();
@@ -17,10 +19,12 @@ const Detail = () => {
   useEffect(() => {
     if (id) {
       dispatch(fetchMovieDetail(id));
+      dispatch(fetchCastAndCrewsFromSelectedMovie(id));
     }
 
     return () => {
       dispatch(resetMovieDetail());
+      dispatch(resetCredit());
     };
   }, [id, dispatch]);
 
