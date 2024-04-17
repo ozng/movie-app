@@ -2,6 +2,7 @@ import { Type } from "@/components/ui/typography/type";
 import { IMAGE_URL } from "@/constants/tmdb";
 import { RootState } from "@/services/redux/store";
 import { useSelector } from "react-redux";
+import { Separator } from "@/components/ui/separator";
 
 const resulation = "/w185";
 const profileURL = IMAGE_URL + resulation;
@@ -17,7 +18,7 @@ const CastAndCrews = () => {
   return (
     <div className="flex flex-col gap-4">
       <Type thickness={"bold"}>Cast</Type>
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-6 mt-6">
         <div>
           {director ? (
             <div className="flex gap-2">
@@ -37,8 +38,9 @@ const CastAndCrews = () => {
             </div>
           ) : null}
         </div>
-        <div className="flex gap-8">
-          {selectedMovieCredit?.cast.slice(0, 4).map((item) => (
+        <Separator />
+        <div className="grid grid-cols-4 gap-8">
+          {selectedMovieCredit?.cast.slice(0, 8).map((item) => (
             <div key={item.id} className="flex gap-2">
               <img
                 src={profileURL + item.profile_path}
