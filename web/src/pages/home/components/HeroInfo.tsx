@@ -37,9 +37,9 @@ const HeroInfo = ({ selectedMovie }: HeroInfoProps) => {
       </Type>
       <div className="flex gap-6">
         <Button>Watch Trailer</Button>
-        <Button variant={"secondary"}>
-          <Link to={`/detail/${selectedMovie?.id}`}>Detail</Link>
-        </Button>
+        <Link to={`/detail/${selectedMovie?.id}`}>
+          <Button variant={"secondary"}>Detail</Button>
+        </Link>
       </div>
     </div>
   );

@@ -1,9 +1,12 @@
+import { Link } from "react-router-dom";
 import Logo from "../../Logo/Logo";
 
 const NavbarLogo = () => {
   return (
     <div className="size-16 cursor-pointer">
-      <Logo />
+      <Link to={"/"}>
+        <Logo />
+      </Link>
     </div>
   );
 };
