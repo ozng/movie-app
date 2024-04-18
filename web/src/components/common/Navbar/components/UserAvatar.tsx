@@ -1,9 +1,11 @@
+import { Type } from "@/components/ui/typography/type";
+
 const UserAvatar = () => {
   return (
-    <div className="cursor-pointer">
-      <h2 className="tracking-tighter underline text-sm text-light-title dark:text-dark-title">
-        ozangurer
-      </h2>
+    <div className="cursor-pointer bg-accent hover:bg-accent/90 duration-75 size-10 flex items-center justify-center rounded-full">
+      <Type variant={"light"} thickness={"bold"} size={"lg"}>
+        O
+      </Type>
     </div>
   );
 };
