@@ -1,22 +1,29 @@
 import { Type } from "@/components/ui/typography/type";
 import { IMAGE_URL } from "@/constants/tmdb";
-import { RootState } from "@/services/redux/store";
+import { RootState, useAppDispatch } from "@/services/redux/store";
 import { useSelector } from "react-redux";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
-import { FaAngleUp } from "react-icons/fa6";
+import { FaAngleDown, FaAngleUp } from "react-icons/fa6";
+import { hideCast, showCast } from "@/services/redux/slices/peopleSlice";
 
 const resulation = "/w185";
 const profileURL = IMAGE_URL + resulation;
 
 const CastAndCrews = () => {
-  const { selectedMovieCredit } = useSelector(
+  const dispatch = useAppDispatch();
+  const { filteredMovieCredit, showAllCast } = useSelector(
     (state: RootState) => state.people
   );
 
-  const director = selectedMovieCredit?.crew.find(
+  const director = filteredMovieCredit?.crew.find(
     (item) => item.known_for_department === "Directing"
   );
+
+  const handleShowAllCast = () => {
+    showAllCast ? dispatch(hideCast()) : dispatch(showCast());
+  };
+
   return (
     <div className="flex flex-col gap-4">
       <Type thickness={"bold"}>Cast</Type>
@@ -43,7 +50,7 @@ const CastAndCrews = () => {
         <Separator />
         <div className="space-y-6">
           <div className="grid grid-cols-4 gap-8">
-            {selectedMovieCredit?.cast.slice(0, 8).map((item) => (
+            {filteredMovieCredit?.cast.map((item) => (
               <div key={item.id} className="flex gap-2">
                 <img
                   src={profileURL + item.profile_path}
@@ -61,8 +68,16 @@ const CastAndCrews = () => {
               </div>
             ))}
           </div>
-          <Button variant={"link"} className="space-x-2">
-            <FaAngleUp className="text-light-paragraph dark:text-dark-paragraph" />
+          <Button
+            variant={"link"}
+            className="space-x-2"
+            onClick={handleShowAllCast}
+          >
+            {showAllCast ? (
+              <FaAngleUp className="text-light-paragraph dark:text-dark-paragraph" />
+            ) : (
+              <FaAngleDown className="text-light-paragraph dark:text-dark-paragraph" />
+            )}
             <Type>See all cast</Type>
           </Button>
         </div>

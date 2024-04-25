@@ -5,14 +5,20 @@ import { CastAndCrewReturnType } from "@/services/tmdb/people";
 interface PeopleState {
   people: string;
   selectedMovieCredit: CastAndCrewReturnType | null;
+  filteredMovieCredit: CastAndCrewReturnType | null;
   loadingCastAndCrew: boolean;
+  showAllCast: boolean;
 }
 
 const initialState: PeopleState = {
   people: "",
   selectedMovieCredit: null,
+  filteredMovieCredit: null,
   loadingCastAndCrew: false,
+  showAllCast: false,
 };
+
+const maxCastLength = 8;
 
 export const peopleSlice = createSlice({
   name: "people",
@@ -20,6 +26,22 @@ export const peopleSlice = createSlice({
   reducers: {
     resetCredit: (state) => {
       state.selectedMovieCredit = null;
+      state.filteredMovieCredit = null;
+    },
+    showCast: (state) => {
+      state.filteredMovieCredit = state.selectedMovieCredit
+        ? { ...state.selectedMovieCredit }
+        : null;
+      state.showAllCast = true;
+    },
+    hideCast: (state) => {
+      state.filteredMovieCredit = state.selectedMovieCredit
+        ? {
+            ...state.selectedMovieCredit,
+            cast: state.selectedMovieCredit.cast.slice(0, maxCastLength),
+          }
+        : null;
+      state.showAllCast = false;
     },
   },
   extraReducers: (builder) => {
@@ -34,11 +56,16 @@ export const peopleSlice = createSlice({
       (state, action) => {
         state.loadingCastAndCrew = false;
         state.selectedMovieCredit = action.payload;
+        state.filteredMovieCredit = {
+          ...action.payload,
+          cast: action.payload.cast.slice(0, maxCastLength),
+        };
+        state.showAllCast = false;
       }
     );
   },
 });
 
-export const { resetCredit } = peopleSlice.actions;
+export const { resetCredit, showCast, hideCast } = peopleSlice.actions;
 
 export default peopleSlice.reducer;
