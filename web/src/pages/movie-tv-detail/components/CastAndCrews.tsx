@@ -6,6 +6,7 @@ import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa6";
 import { hideCast, showCast } from "@/services/redux/slices/peopleSlice";
+import NoImage from "@/components/NoImage";
 
 const resulation = "/w185";
 const profileURL = IMAGE_URL + resulation;
@@ -16,8 +17,8 @@ const CastAndCrews = () => {
     (state: RootState) => state.people
   );
 
-  const director = filteredMovieCredit?.crew.find(
-    (item) => item.known_for_department === "Directing"
+  const director = filteredMovieCredit?.crew.filter(
+    (item) => item.job === "Director"
   );
 
   const handleShowAllCast = () => {
@@ -31,19 +32,27 @@ const CastAndCrews = () => {
         <div>
           {director ? (
             <div className="flex gap-2">
-              <img
-                src={profileURL + director.profile_path}
-                alt="actor/actress"
-                className="size-10 object-cover rounded-2xl"
-              />
-              <div className="flex flex-col justify-between">
-                <Type size={"sm"} thickness={"bold"}>
-                  {director.name}
-                </Type>
-                <Type size={"xs"} variant={"fade-1"}>
-                  {director.job}
-                </Type>
-              </div>
+              {director.length > 0 ? (
+                director.map((item) => (
+                  <div key={item.id}>
+                    <img
+                      src={profileURL + item.profile_path}
+                      alt="actor/actress"
+                      className="size-10 object-cover rounded-2xl"
+                    />
+                    <div className="flex flex-col justify-between">
+                      <Type size={"sm"} thickness={"bold"}>
+                        {item.name}
+                      </Type>
+                      <Type size={"xs"} variant={"fade-1"}>
+                        {item.job}
+                      </Type>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <NoImage />
+              )}
             </div>
           ) : null}
         </div>
@@ -51,12 +60,17 @@ const CastAndCrews = () => {
         <div className="space-y-6">
           <div className="grid grid-cols-4 gap-8">
             {filteredMovieCredit?.cast.map((item) => (
-              <div key={item.id} className="flex gap-2">
-                <img
-                  src={profileURL + item.profile_path}
-                  alt="actor/actress"
-                  className="size-10 object-cover rounded-2xl"
-                />
+              <div key={item.credit_id} className="flex gap-2">
+                {item.profile_path ? (
+                  <img
+                    src={profileURL + item.profile_path}
+                    alt="actor/actress"
+                    className="size-10 object-cover rounded-2xl"
+                  />
+                ) : (
+                  <NoImage />
+                )}
+
                 <div className="flex flex-col justify-between">
                   <Type size={"sm"} thickness={"bold"}>
                     {item.name}
@@ -78,7 +92,7 @@ const CastAndCrews = () => {
             ) : (
               <FaAngleDown className="text-light-paragraph dark:text-dark-paragraph" />
             )}
-            <Type>See all cast</Type>
+            <Type>{showAllCast ? "Hide " : "See all "}cast</Type>
           </Button>
         </div>
       </div>
