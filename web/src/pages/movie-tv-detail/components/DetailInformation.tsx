@@ -12,7 +12,7 @@ const DetailInformation = () => {
   const { movieDetail } = useSelector((state: RootState) => state.movie);
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-8 col-span-3">
       <div className="flex justify-between items-center">
         <div>
           <Title size={"2xl"} thickness={"bold"}>

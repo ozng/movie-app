@@ -33,12 +33,8 @@ const Detail = () => {
       <Container>
         {movieDetail ? (
           <div className="grid grid-cols-4 gap-12">
-            <div>
-              <DetailPoster />
-            </div>
-            <div className="col-span-3">
-              <DetailInformation />
-            </div>
+            <DetailPoster />
+            <DetailInformation />
           </div>
         ) : null}
       </Container>
