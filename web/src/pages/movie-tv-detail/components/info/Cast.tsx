@@ -1,17 +1,17 @@
+import NoImage from "@/components/NoImage";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import { Type } from "@/components/ui/typography/type";
 import { IMAGE_URL } from "@/constants/tmdb";
-import { RootState, useAppDispatch } from "@/services/redux/store";
-import { useSelector } from "react-redux";
-import { Separator } from "@/components/ui/separator";
-import { Button } from "@/components/ui/button";
-import { FaAngleDown, FaAngleUp } from "react-icons/fa6";
 import { hideCast, showCast } from "@/services/redux/slices/peopleSlice";
-import NoImage from "@/components/NoImage";
+import { RootState, useAppDispatch } from "@/services/redux/store";
+import { FaAngleDown, FaAngleUp } from "react-icons/fa6";
+import { useSelector } from "react-redux";
 
 const resulation = "/w185";
 const profileURL = IMAGE_URL + resulation;
 
-const CastAndCrews = () => {
+const Cast = () => {
   const dispatch = useAppDispatch();
   const { filteredMovieCredit, showAllCast } = useSelector(
     (state: RootState) => state.people
@@ -111,4 +111,4 @@ const CastAndCrews = () => {
   );
 };
 
-export default CastAndCrews;
+export default Cast;
