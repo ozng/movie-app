@@ -12,7 +12,7 @@ const Links = () => {
     <div className="space-x-10">
       {links.map((item) => (
         <Link key={item.id} to={item.href}>
-          <Type variant={"light"} className="hover:text-accent">
+          <Type variant={"fade-3"} className="hover:text-accent">
             {item.label}
           </Type>
         </Link>
