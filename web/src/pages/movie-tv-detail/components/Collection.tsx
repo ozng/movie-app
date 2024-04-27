@@ -18,7 +18,7 @@ const Collection = () => {
   }, [dispatch, movieDetail?.belongs_to_collection]);
 
   return movieDetail?.belongs_to_collection ? (
-    <div className="flex gap-32">
+    <div>
       {collection ? (
         <HorizontalMovieTVList
           title={collection.name}
