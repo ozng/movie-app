@@ -4,6 +4,7 @@ import {
   fetchMovieDetail,
   fetchNowPlayingMovies,
   fetchPopularMovies,
+  fetchSimilarMovies,
   fetchTopRatedMovies,
   fetchUpcomingMovies,
 } from "../actions/movies";
@@ -17,6 +18,8 @@ export interface MovieState {
   loadingTopRated: boolean;
   upcoming: Movie[] | [];
   loadingUpcoming: boolean;
+  similarMovies: Movie[] | [];
+  loadingSimilarMovies: boolean;
   movieDetail: MovieDetail | null;
   loadingMovieDetail: boolean;
 }
@@ -30,6 +33,8 @@ const initialState: MovieState = {
   loadingTopRated: false,
   upcoming: [],
   loadingUpcoming: false,
+  similarMovies: [],
+  loadingSimilarMovies: false,
   movieDetail: null,
   loadingMovieDetail: false,
 };
@@ -40,6 +45,7 @@ export const movieSlice = createSlice({
   reducers: {
     resetMovieDetail: (state) => {
       state.movieDetail = null;
+      state.similarMovies = [];
     },
   },
   extraReducers: (builder) => {
@@ -97,6 +103,17 @@ export const movieSlice = createSlice({
     builder.addCase(fetchMovieDetail.rejected, (state) => {
       state.loadingMovieDetail = false;
       state.movieDetail = null;
+    });
+    builder.addCase(fetchSimilarMovies.pending, (state) => {
+      state.loadingSimilarMovies = true;
+    });
+    builder.addCase(fetchSimilarMovies.fulfilled, (state, action) => {
+      state.similarMovies = action.payload;
+      state.loadingSimilarMovies = false;
+    });
+    builder.addCase(fetchSimilarMovies.rejected, (state) => {
+      state.loadingSimilarMovies = false;
+      state.similarMovies = [];
     });
   },
 });

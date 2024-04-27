@@ -18,11 +18,16 @@ const HorizontalMovieTVCard = ({ movieOrTV }: HorizontalMovieTVCardProps) => {
       to={`/detail/${movieOrTV.id}`}
       className="w-48 flex flex-col gap-2 cursor-pointer hover:scale-105 duration-200"
     >
-      <img
-        src={imageBase + movieOrTV.poster_path}
-        alt="poster"
-        className="w-48 rounded-lg h-auto"
-      />
+      {movieOrTV.poster_path ? (
+        <img
+          src={imageBase + movieOrTV.poster_path}
+          alt="poster"
+          className="w-48 rounded-lg h-[288px]"
+        />
+      ) : (
+        <div className="w-48 bg-faded-1 rounded-lg flex h-[288px]" />
+      )}
+
       <div className="grid grid-cols-4 gap-2">
         <div className="col-span-3">
           <Title size={"sm"} thickness={"semibold"} className="tracking-tight">

@@ -1,18 +1,17 @@
 import Container from "@/components/Container";
 import { fetchMovieDetail } from "@/services/redux/actions/movies";
-import { RootState, useAppDispatch } from "@/services/redux/store";
+import { useAppDispatch } from "@/services/redux/store";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import DetailPoster from "./components/DetailPoster";
 import DetailInformation from "./components/DetailInformation";
 import { resetMovieDetail } from "@/services/redux/slices/movieSlice";
 import { fetchCastAndCrewsFromSelectedMovie } from "@/services/redux/actions/people";
 import { resetCredit } from "@/services/redux/slices/peopleSlice";
+import Similar from "./components/Similar";
 
 const Detail = () => {
   const { id } = useParams();
-  const { movieDetail } = useSelector((state: RootState) => state.movie);
 
   const dispatch = useAppDispatch();
 
@@ -30,13 +29,12 @@ const Detail = () => {
 
   return (
     <div className="min-h-screen py-24">
-      <Container>
-        {movieDetail ? (
-          <div className="grid grid-cols-4 gap-12">
-            <DetailPoster />
-            <DetailInformation />
-          </div>
-        ) : null}
+      <Container className="space-y-12">
+        <div className="grid grid-cols-4 gap-12">
+          <DetailPoster />
+          <DetailInformation />
+        </div>
+        <Similar />
       </Container>
     </div>
   );

@@ -2,6 +2,7 @@ import {
   fetchDetail,
   fetchNowPlaying,
   fetchPopular,
+  fetchSimilar,
   fetchTopRated,
   fetchUpcoming,
 } from "@/services/tmdb/movies";
@@ -43,6 +44,14 @@ export const fetchMovieDetail = createAsyncThunk(
   "movie/fetchMovieDetail",
   async (id: string) => {
     const response = await fetchDetail(id);
+    return response;
+  }
+);
+
+export const fetchSimilarMovies = createAsyncThunk(
+  "movie/fetchSimilarMovies",
+  async (id: string) => {
+    const response = await fetchSimilar(id);
     return response;
   }
 );

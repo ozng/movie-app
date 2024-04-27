@@ -51,3 +51,13 @@ export const fetchDetail: FetchDetail = async (id) => {
 
   return data;
 };
+
+type FetchSimilar = (id: string) => Promise<Movie[]>;
+
+export const fetchSimilar: FetchSimilar = async (id) => {
+  const { data } = await axios.get(`${BASE_URL}${MOVIE_URL}/${id}/similar`, {
+    params: { api_key: API_KEY },
+  });
+
+  return data.results;
+};
