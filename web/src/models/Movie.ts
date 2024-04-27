@@ -80,7 +80,12 @@ export class MovieDetail extends MovieRoot {
     public video: boolean,
     public vote_average: number,
     public vote_count: number,
-    public belongs_to_collection: string,
+    public belongs_to_collection: {
+      id: number;
+      name: string;
+      poster_path: string;
+      backdrop_path: string;
+    },
     public budget: number,
     public genres: { id: number; name: string }[],
     public homepage: string,
@@ -129,5 +134,43 @@ export class MovieDetail extends MovieRoot {
     this.spoken_languages = spoken_languages;
     this.status = status;
     this.tagline = tagline;
+  }
+}
+
+export class CollectionDetail extends MovieRoot {
+  constructor(
+    public id: string,
+    public title: string,
+    public adult: boolean,
+    public backdrop_path: string,
+    public original_language: string,
+    public original_title: string,
+    public overview: string,
+    public popularity: number,
+    public poster_path: string,
+    public release_date: string,
+    public video: boolean,
+    public vote_average: number,
+    public vote_count: number,
+    public media_type: string,
+    public genre_ids: number[]
+  ) {
+    super(
+      id,
+      title,
+      adult,
+      backdrop_path,
+      original_language,
+      original_title,
+      overview,
+      popularity,
+      poster_path,
+      release_date,
+      video,
+      vote_average,
+      vote_count
+    );
+    this.media_type = media_type;
+    this.genre_ids = genre_ids;
   }
 }

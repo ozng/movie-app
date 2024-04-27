@@ -1,5 +1,6 @@
-import { API_KEY, BASE_URL, MOVIE_URL } from "@/constants/tmdb";
+import { API_KEY, BASE_URL, COLLECTION_URL, MOVIE_URL } from "@/constants/tmdb";
 import { Movie, MovieDetail } from "@/models/Movie";
+import { CollectionReturn } from "@/types/Collection";
 import axios from "axios";
 
 type FetchNowPlaying = () => Promise<Movie[] | []>;
@@ -60,4 +61,14 @@ export const fetchSimilar: FetchSimilar = async (id) => {
   });
 
   return data.results;
+};
+
+type FetchCollection = (id: number) => Promise<CollectionReturn>;
+
+export const fetchCollection: FetchCollection = async (id) => {
+  const { data } = await axios.get(`${BASE_URL}${COLLECTION_URL}/${id}`, {
+    params: { api_key: API_KEY },
+  });
+
+  return data;
 };

@@ -1,4 +1,5 @@
 import {
+  fetchCollection,
   fetchDetail,
   fetchNowPlaying,
   fetchPopular,
@@ -52,6 +53,14 @@ export const fetchSimilarMovies = createAsyncThunk(
   "movie/fetchSimilarMovies",
   async (id: string) => {
     const response = await fetchSimilar(id);
+    return response;
+  }
+);
+
+export const fetchMoviesCollection = createAsyncThunk(
+  "movie/fetchMoviesCollection",
+  async (id: number) => {
+    const response = await fetchCollection(id);
     return response;
   }
 );

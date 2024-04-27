@@ -7,7 +7,7 @@ import { scrollHandler } from "@/utils/scroll";
 import { Title } from "./ui/typography/title";
 
 type HorizontalMovieTVListProps = {
-  title: string;
+  title?: string;
   list?: Movie[] | [];
 };
 

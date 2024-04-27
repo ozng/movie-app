@@ -2,12 +2,14 @@ import { Movie, MovieDetail } from "@/models/Movie";
 import { createSlice } from "@reduxjs/toolkit";
 import {
   fetchMovieDetail,
+  fetchMoviesCollection,
   fetchNowPlayingMovies,
   fetchPopularMovies,
   fetchSimilarMovies,
   fetchTopRatedMovies,
   fetchUpcomingMovies,
 } from "../actions/movies";
+import { CollectionReturn } from "@/types/Collection";
 
 export interface MovieState {
   nowPlaying: Movie[] | [];
@@ -20,6 +22,8 @@ export interface MovieState {
   loadingUpcoming: boolean;
   similarMovies: Movie[] | [];
   loadingSimilarMovies: boolean;
+  collection: CollectionReturn | null;
+  loadingCollection: boolean;
   movieDetail: MovieDetail | null;
   loadingMovieDetail: boolean;
 }
@@ -35,6 +39,8 @@ const initialState: MovieState = {
   loadingUpcoming: false,
   similarMovies: [],
   loadingSimilarMovies: false,
+  collection: null,
+  loadingCollection: false,
   movieDetail: null,
   loadingMovieDetail: false,
 };
@@ -114,6 +120,17 @@ export const movieSlice = createSlice({
     builder.addCase(fetchSimilarMovies.rejected, (state) => {
       state.loadingSimilarMovies = false;
       state.similarMovies = [];
+    });
+    builder.addCase(fetchMoviesCollection.pending, (state) => {
+      state.loadingCollection = true;
+    });
+    builder.addCase(fetchMoviesCollection.fulfilled, (state, action) => {
+      state.collection = action.payload;
+      state.loadingCollection = false;
+    });
+    builder.addCase(fetchMoviesCollection.rejected, (state) => {
+      state.loadingCollection = false;
+      state.collection = null;
     });
   },
 });

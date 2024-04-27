@@ -2,6 +2,7 @@ import Rate from "@/components/Rate";
 import { Title } from "@/components/ui/typography/title";
 import { Type } from "@/components/ui/typography/type";
 import { RootState } from "@/services/redux/store";
+import { convertMinutesToHour } from "@/utils/format";
 import moment from "moment";
 import { useSelector } from "react-redux";
 
@@ -19,10 +20,17 @@ const TitleDateRate = () => {
         ) : null}
         <div className="flex">
           {movieDetail?.release_date ? (
-            <Type size={"sm"} variant={"fade-1"}>
-              Released at{" "}
-              {moment(movieDetail.release_date).format("D MMMM YYYY")}
-            </Type>
+            <div className="space-x-2">
+              <Type size={"sm"} variant={"fade-1"}>
+                {moment(movieDetail.release_date).format("D MMMM YYYY")}
+              </Type>
+              <Type size={"default"} variant={"fade-1"}>
+                |
+              </Type>
+              <Type size={"sm"} variant={"fade-1"}>
+                {convertMinutesToHour(movieDetail.runtime)}
+              </Type>
+            </div>
           ) : null}
         </div>
       </div>
