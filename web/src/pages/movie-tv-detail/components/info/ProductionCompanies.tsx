@@ -12,7 +12,7 @@ const ProductionCompanies = () => {
   return (
     <div className="grid grid-cols-6 gap-6">
       {movieDetail?.production_companies?.map((item) => (
-        <div className="size-20 flex items-center justify-center">
+        <div key={item.id} className="size-20 flex items-center justify-center">
           {item.logo_path ? (
             <img src={profileURL + item.logo_path} alt="company logo" />
           ) : (
