@@ -7,12 +7,14 @@ import { hideCast, showCast } from "@/services/redux/slices/peopleSlice";
 import { RootState, useAppDispatch } from "@/services/redux/store";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa6";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const resulation = "/w185";
 const profileURL = IMAGE_URL + resulation;
 
 const Cast = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const { filteredMovieCredit, showAllCast } = useSelector(
     (state: RootState) => state.people
   );
@@ -37,6 +39,7 @@ const Cast = () => {
                   <div
                     key={item.credit_id}
                     className="flex gap-2 cursor-pointer duration-150 hover:bg-accent/10 rounded-2xl p-2"
+                    onClick={() => navigate(`/people/detail/${item.id}`)}
                   >
                     {item.profile_path ? (
                       <img
@@ -71,6 +74,7 @@ const Cast = () => {
               <div
                 key={item.credit_id}
                 className="flex gap-2 cursor-pointer duration-150 hover:bg-accent/10 rounded-2xl p-2"
+                onClick={() => navigate(`/people/detail/${item.id}`)}
               >
                 {item.profile_path ? (
                   <img

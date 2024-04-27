@@ -1,6 +1,7 @@
 import RootLayout from "@/layouts/RootLayout";
 import Home from "@/pages/home/Home";
 import Detail from "@/pages/movie-tv-detail/Detail";
+import PeopleDetail from "@/pages/people-detail/PeopleDetail";
 import { Route, Routes } from "react-router-dom";
 
 const RootNavigation = () => {
@@ -19,6 +20,14 @@ const RootNavigation = () => {
         element={
           <RootLayout>
             <Detail />
+          </RootLayout>
+        }
+      />
+      <Route
+        path="/people/detail/:id"
+        element={
+          <RootLayout>
+            <PeopleDetail />
           </RootLayout>
         }
       />
