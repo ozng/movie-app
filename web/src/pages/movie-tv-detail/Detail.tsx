@@ -22,6 +22,8 @@ const Detail = () => {
       dispatch(fetchCastAndCrewsFromSelectedMovie(id));
     }
 
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
     return () => {
       dispatch(resetMovieDetail());
       dispatch(resetCredit());

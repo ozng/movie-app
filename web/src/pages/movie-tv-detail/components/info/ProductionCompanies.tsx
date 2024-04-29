@@ -12,7 +12,7 @@ const ProductionCompanies = () => {
   return (
     <>
       <Type thickness={"bold"}>Production Companies</Type>
-      <div className="grid grid-cols-6">
+      <div className="grid grid-cols-3">
         {movieDetail?.production_companies?.map((item) => (
           <div
             key={item.id}

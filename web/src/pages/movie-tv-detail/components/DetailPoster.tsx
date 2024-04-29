@@ -2,6 +2,7 @@ import Poster from "./poster/Poster";
 import Links from "./poster/Links";
 import Buttons from "./poster/Buttons";
 import BudgetAndRevenue from "./poster/BudgetAndRevenue";
+import ProductionCompanies from "./info/ProductionCompanies";
 
 const DetailPoster = () => {
   return (
@@ -10,6 +11,7 @@ const DetailPoster = () => {
       <Links />
       <Buttons />
       <BudgetAndRevenue />
+      <ProductionCompanies />
     </div>
   );
 };

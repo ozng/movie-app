@@ -3,8 +3,8 @@ import Languages from "./info/Languages";
 import Categories from "./info/Categories";
 import AdultWarning from "./info/AdultWarning";
 import Overview from "./info/Overview";
-import ProductionCompanies from "./info/ProductionCompanies";
 import Cast from "./info/Cast";
+import Media from "./info/Media";
 
 const DetailInformation = () => {
   return (
@@ -14,7 +14,7 @@ const DetailInformation = () => {
       <Categories />
       <AdultWarning />
       <Overview />
-      <ProductionCompanies />
+      <Media />
       <Cast />
     </div>
   );
