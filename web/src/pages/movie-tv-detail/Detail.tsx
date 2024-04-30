@@ -10,6 +10,7 @@ import { fetchCastAndCrewsFromSelectedMovie } from "@/services/redux/actions/peo
 import { resetCredit } from "@/services/redux/slices/peopleSlice";
 import Similar from "./components/Similar";
 import Collection from "./components/Collection";
+import { resetMedia } from "@/services/redux/slices/mediaSlice";
 
 const Detail = () => {
   const { id } = useParams();
@@ -27,6 +28,7 @@ const Detail = () => {
     return () => {
       dispatch(resetMovieDetail());
       dispatch(resetCredit());
+      dispatch(resetMedia());
     };
   }, [id, dispatch]);
 
