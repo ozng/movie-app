@@ -1,11 +1,11 @@
-import { ImageReturnType } from "@/types/Media";
+import { ImageReturnType, VideoReturnType } from "@/types/Media";
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchImages } from "../actions/media";
+import { fetchImages, fetchVideos } from "../actions/media";
 
 interface MediaState {
   photos: ImageReturnType | null;
   loadingPhotos: boolean;
-  videos: null;
+  videos: VideoReturnType | null;
   loadingVideos: boolean;
 }
 
@@ -26,6 +26,7 @@ export const mediaSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    // Images
     builder.addCase(fetchImages.pending, (state) => {
       state.loadingPhotos = true;
     });
@@ -35,6 +36,18 @@ export const mediaSlice = createSlice({
     });
     builder.addCase(fetchImages.rejected, (state) => {
       state.loadingPhotos = false;
+      state.photos = null;
+    });
+    // Videos
+    builder.addCase(fetchVideos.pending, (state) => {
+      state.loadingVideos = true;
+    });
+    builder.addCase(fetchVideos.fulfilled, (state, action) => {
+      state.loadingVideos = false;
+      state.videos = action.payload;
+    });
+    builder.addCase(fetchVideos.rejected, (state) => {
+      state.loadingVideos = false;
       state.photos = null;
     });
   },
