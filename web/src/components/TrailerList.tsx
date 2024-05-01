@@ -26,28 +26,22 @@ const TrailerList = ({ videos }: TrailerListProps) => {
   return (
     <div>
       <div className="space-y-4">
-        <div className="flex items-center justify-evenly">
+        <div className="flex">
+          <iframe
+            src={`https://www.youtube.com/embed/${videos[selectedTrailer].key}`}
+            className="w-full h-[30rem]"
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          ></iframe>
+        </div>
+        <div className="flex gap-4 items-center justify-center">
           <Button
             variant={"outline"}
             onClick={() => changeTrailerHandler("prev")}
           >
             <FaAngleLeft size={21} />
           </Button>
-          <iframe
-            src={`https://www.youtube.com/embed/${videos[selectedTrailer].key}`}
-            className="w-[70%] h-[30rem]"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-          ></iframe>
-          <Button
-            variant={"outline"}
-            onClick={() => changeTrailerHandler("next")}
-          >
-            <FaAngleRight size={21} />
-          </Button>
-        </div>
-        <div className="flex gap-4 justify-center">
           {videos.map((_item, index) => (
             <div
               key={_item.id}
@@ -59,6 +53,12 @@ const TrailerList = ({ videos }: TrailerListProps) => {
               onClick={() => setSelectedTrailer(index)}
             />
           ))}
+          <Button
+            variant={"outline"}
+            onClick={() => changeTrailerHandler("next")}
+          >
+            <FaAngleRight size={21} />
+          </Button>
         </div>
       </div>
     </div>
