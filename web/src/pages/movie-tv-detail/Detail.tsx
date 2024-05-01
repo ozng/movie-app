@@ -1,6 +1,6 @@
 import Container from "@/components/Container";
 import { fetchMovieDetail } from "@/services/redux/actions/movies";
-import { useAppDispatch } from "@/services/redux/store";
+import { RootState, useAppDispatch } from "@/services/redux/store";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import DetailPoster from "./components/DetailPoster";
@@ -11,11 +11,14 @@ import { resetCredit } from "@/services/redux/slices/peopleSlice";
 import Similar from "./components/Similar";
 import Collection from "./components/Collection";
 import { resetMedia } from "@/services/redux/slices/mediaSlice";
+import { useSelector } from "react-redux";
 
 const Detail = () => {
   const { id } = useParams();
 
   const dispatch = useAppDispatch();
+
+  const { movieDetail } = useSelector((state: RootState) => state.movie);
 
   useEffect(() => {
     if (id) {
@@ -31,6 +34,16 @@ const Detail = () => {
       dispatch(resetMedia());
     };
   }, [id, dispatch]);
+
+  useEffect(() => {
+    if (movieDetail && movieDetail.title) {
+      document.title = movieDetail.title;
+    }
+
+    return () => {
+      document.title = "RMTV";
+    };
+  }, [movieDetail]);
 
   return (
     <div className="min-h-screen py-24">
