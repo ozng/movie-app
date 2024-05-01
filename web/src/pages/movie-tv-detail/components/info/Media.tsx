@@ -18,7 +18,7 @@ const Media = () => {
   }, [dispatch, movieDetail?.id]);
 
   return (
-    <div className="space-y-12">
+    <div className="flex flex-col gap-4">
       {videos && videos.results ? (
         <TrailerList
           videos={videos.results.filter((item) => item.type === "Trailer")}
