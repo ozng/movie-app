@@ -17,3 +17,5 @@ export type LogoSizes =
   | "w300"
   | "w500"
   | "original";
+
+export type ProfileSizes = "w45" | "w185" | "h632" | "original";

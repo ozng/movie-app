@@ -50,6 +50,7 @@ const TrailerList = ({ videos }: TrailerListProps) => {
         <div className="flex gap-4 justify-center">
           {videos.map((_item, index) => (
             <div
+              key={_item.id}
               className={`h-2 w-2 ${
                 index === selectedTrailer
                   ? "bg-light-title dark:bg-dark-title scale-125"

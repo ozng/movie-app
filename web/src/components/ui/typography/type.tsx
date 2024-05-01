@@ -3,7 +3,7 @@ import { Slot } from "@radix-ui/react-slot";
 import { type VariantProps, cva } from "class-variance-authority";
 import React from "react";
 
-const typeVariants = cva("", {
+const typeVariants = cva("inline-block", {
   variants: {
     variant: {
       default: "text-light-paragraph dark:text-dark-paragraph",
@@ -41,14 +41,14 @@ const typeVariants = cva("", {
 });
 
 export interface TypeProps
-  extends React.HTMLAttributes<HTMLSpanElement>,
+  extends React.HTMLAttributes<HTMLParagraphElement>,
     VariantProps<typeof typeVariants> {
   asChild?: boolean;
 }
 
-const Type = React.forwardRef<HTMLSpanElement, TypeProps>(
+const Type = React.forwardRef<HTMLParagraphElement, TypeProps>(
   ({ className, variant, size, thickness, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "span";
+    const Comp = asChild ? Slot : "p";
     return (
       <Comp
         className={cn(typeVariants({ variant, thickness, size, className }))}
