@@ -1,9 +1,9 @@
 import { IMAGE_URL } from "@/constants/tmdb";
-import { Movie } from "@/models/Movie";
 import { IoIosStar } from "react-icons/io";
 import { Title } from "../ui/typography/title";
 import { Type } from "../ui/typography/type";
 import { Link } from "react-router-dom";
+import { Movie } from "@/types/Movie";
 
 type HorizontalMovieTVCardProps = {
   movieOrTV: Movie;

@@ -1,6 +1,5 @@
 import { API_KEY, BASE_URL, MOVIE_URL, PERSON_URL } from "@/constants/tmdb";
-import { Cast, Crew } from "@/models/People";
-import { People } from "@/types/People";
+import { Cast, Crew, People } from "@/types/People";
 import axios from "axios";
 
 export type CastAndCrewReturnType = {

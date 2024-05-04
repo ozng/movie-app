@@ -1,10 +1,10 @@
-import { Movie } from "@/models/Movie";
 import HorizontalMovieTVCard from "./cards/HorizontalMovieTVCard";
 import { Button } from "./ui/button";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 import { useRef } from "react";
 import { scrollHandler } from "@/utils/scroll";
 import { Title } from "./ui/typography/title";
+import { Movie } from "@/types/Movie";
 
 type HorizontalMovieTVListProps = {
   title?: string;

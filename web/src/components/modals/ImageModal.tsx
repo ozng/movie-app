@@ -50,7 +50,7 @@ const ImageModal = ({
           : "hidden opacity-0 w-0 h-0  duration-300"
       }
     >
-      <div className="relative w-full h-full flex justify-center items-center backdrop-blur-sm bg-transparent">
+      <div className="relative w-full h-full flex justify-center items-center backdrop-blur-xl bg-transparent">
         <img
           src={IMAGE_URL + "/" + size + src}
           alt={type}

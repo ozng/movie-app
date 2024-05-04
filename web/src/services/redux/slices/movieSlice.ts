@@ -1,4 +1,3 @@
-import { Movie, MovieDetail } from "@/models/Movie";
 import { createSlice } from "@reduxjs/toolkit";
 import {
   fetchMovieDetail,
@@ -10,6 +9,7 @@ import {
   fetchUpcomingMovies,
 } from "../actions/movies";
 import { CollectionReturn } from "@/types/Collection";
+import { Movie, MovieDetail } from "@/types/Movie";
 
 export interface MovieState {
   nowPlaying: Movie[] | [];

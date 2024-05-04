@@ -1,4 +1,4 @@
-import { CollectionDetail } from "@/models/Movie";
+import { MovieRoot } from "./Movie";
 
 export type CollectionReturn = {
   id: number;
@@ -8,3 +8,8 @@ export type CollectionReturn = {
   backdrop_path: string;
   parts: CollectionDetail[];
 };
+
+export interface CollectionDetail extends MovieRoot {
+  media_type: string;
+  genre_ids: number[];
+}

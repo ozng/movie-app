@@ -1,6 +1,6 @@
 import { API_KEY, BASE_URL, COLLECTION_URL, MOVIE_URL } from "@/constants/tmdb";
-import { Movie, MovieDetail } from "@/models/Movie";
 import { CollectionReturn } from "@/types/Collection";
+import { Movie, MovieDetail } from "@/types/Movie";
 import axios from "axios";
 
 type FetchNowPlaying = () => Promise<Movie[] | []>;
