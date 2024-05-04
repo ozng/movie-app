@@ -19,7 +19,7 @@ const Media = () => {
 
   return (
     <div className="flex flex-col gap-4">
-      {videos && videos.results ? (
+      {videos && videos.results && videos.results.length > 0 ? (
         <TrailerList
           videos={videos.results.filter((item) => item.type === "Trailer")}
         />

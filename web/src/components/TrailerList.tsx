@@ -10,6 +10,8 @@ type TrailerListProps = {
 const TrailerList = ({ videos }: TrailerListProps) => {
   const [selectedTrailer, setSelectedTrailer] = useState(0);
 
+  console.log(videos);
+
   type ChangeTrailerHandlerType = (type: "next" | "prev") => void;
   const changeTrailerHandler: ChangeTrailerHandlerType = (type) => {
     const payload = type === "next" ? 1 : -1;
@@ -28,7 +30,7 @@ const TrailerList = ({ videos }: TrailerListProps) => {
       <div className="space-y-4">
         <div className="flex">
           <iframe
-            src={`https://www.youtube.com/embed/${videos[selectedTrailer].key}`}
+            src={`https://www.youtube.com/embed/${videos[selectedTrailer]?.key}`}
             className="w-full h-[30rem]"
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -42,17 +44,19 @@ const TrailerList = ({ videos }: TrailerListProps) => {
           >
             <FaAngleLeft size={21} />
           </Button>
-          {videos.map((_item, index) => (
-            <div
-              key={_item.id}
-              className={`h-2 w-2 ${
-                index === selectedTrailer
-                  ? "bg-light-title dark:bg-dark-title scale-125"
-                  : "bg-transparent"
-              } border border-light-title dark:bg-dark-title rounded-full duration-300 cursor-pointer`}
-              onClick={() => setSelectedTrailer(index)}
-            />
-          ))}
+          {videos && videos.length > 0
+            ? videos.map((item, index) => (
+                <div
+                  key={item.id}
+                  className={`h-2 w-2 ${
+                    index === selectedTrailer
+                      ? "bg-light-title dark:bg-dark-title scale-125"
+                      : "bg-transparent"
+                  } border border-light-title dark:bg-dark-title rounded-full duration-300 cursor-pointer`}
+                  onClick={() => setSelectedTrailer(index)}
+                />
+              ))
+            : null}
           <Button
             variant={"outline"}
             onClick={() => changeTrailerHandler("next")}

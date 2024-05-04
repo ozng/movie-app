@@ -5,6 +5,7 @@ import { Type } from "../ui/typography/type";
 import { IoIosStar } from "react-icons/io";
 import { formatNumber } from "@/utils/format";
 import moment from "moment";
+import { Link } from "react-router-dom";
 
 type CastMovieCardProps = {
   movie: MovieCastCredit;
@@ -15,7 +16,10 @@ const imgUrl = IMAGE_URL + "/" + resulation;
 
 const CastMovieCard = ({ movie }: CastMovieCardProps) => {
   return (
-    <div className="flex gap-2 cursor-pointer p-4 rounded-lg group hover:bg-accent/20 duration-200 ">
+    <Link
+      to={`/detail/${movie.id}`}
+      className="flex gap-2 cursor-pointer p-4 rounded-lg group hover:bg-accent/20 duration-200 "
+    >
       <div className="w-[50px] h-[75px]">
         {movie.poster_path ? (
           <img
@@ -48,7 +52,7 @@ const CastMovieCard = ({ movie }: CastMovieCardProps) => {
           </Type>
         ) : null}
       </div>
-    </div>
+    </Link>
   );
 };
 
