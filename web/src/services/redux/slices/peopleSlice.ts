@@ -2,9 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
   fetchCastAndCrewsFromSelectedMovie,
   fetchPeopleDetails,
+  fetchPeopleMovieCredits,
 } from "../actions/people";
 import { CastAndCrewReturnType } from "@/services/tmdb/people";
-import { People } from "@/types/People";
+import { MovieCreditsReturn, People } from "@/types/People";
 
 interface PeopleState {
   selectedPeople: People | null;
@@ -13,6 +14,8 @@ interface PeopleState {
   filteredMovieCredit: CastAndCrewReturnType | null;
   loadingCastAndCrew: boolean;
   showAllCast: boolean;
+  movies: MovieCreditsReturn | null;
+  loadingMovies: boolean;
 }
 
 const initialState: PeopleState = {
@@ -22,6 +25,8 @@ const initialState: PeopleState = {
   filteredMovieCredit: null,
   loadingCastAndCrew: false,
   showAllCast: false,
+  movies: null,
+  loadingMovies: false,
 };
 
 const maxCastLength = 8;
@@ -52,6 +57,7 @@ export const peopleSlice = createSlice({
     resetPeople: (state) => {
       state.selectedPeople = null;
       state.loadingSelectedPeople = false;
+      state.movies = null;
     },
   },
   extraReducers: (builder) => {
@@ -84,6 +90,26 @@ export const peopleSlice = createSlice({
     builder.addCase(fetchPeopleDetails.fulfilled, (state, action) => {
       state.loadingSelectedPeople = false;
       state.selectedPeople = action.payload;
+    });
+    // People Movies
+    builder.addCase(fetchPeopleMovieCredits.pending, (state) => {
+      state.loadingMovies = true;
+    });
+    builder.addCase(fetchPeopleMovieCredits.rejected, (state) => {
+      state.loadingMovies = false;
+    });
+    builder.addCase(fetchPeopleMovieCredits.fulfilled, (state, action) => {
+      state.loadingMovies = false;
+      action.payload.cast.sort((a, b) => {
+        if (a.release_date < b.release_date) {
+          return 1;
+        } else if (b.release_date < a.release_date) {
+          return -1;
+        } else {
+          return 0;
+        }
+      });
+      state.movies = action.payload;
     });
   },
 });

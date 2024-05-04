@@ -1,3 +1,5 @@
+import { type MovieCastCredit, type MovieCrewCredit } from "./Movie";
+
 interface PeopleRoot {
   adult: boolean;
   gender: number;
@@ -31,3 +33,9 @@ export interface Crew extends PeopleRoot {
   job: string;
   original_name: string;
 }
+
+export type MovieCreditsReturn = {
+  id: number;
+  cast: MovieCastCredit[];
+  crew: MovieCrewCredit[];
+};

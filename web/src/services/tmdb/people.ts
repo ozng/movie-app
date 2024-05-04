@@ -1,5 +1,5 @@
 import { API_KEY, BASE_URL, MOVIE_URL, PERSON_URL } from "@/constants/tmdb";
-import { Cast, Crew, People } from "@/types/People";
+import { Cast, Crew, MovieCreditsReturn, People } from "@/types/People";
 import axios from "axios";
 
 export type CastAndCrewReturnType = {
@@ -27,5 +27,19 @@ export const fetchPeopleDetail: FetchPeopleDetail = async (personID) => {
   const { data } = await axios.get(`${BASE_URL}${PERSON_URL}/${personID}`, {
     params: { api_key: API_KEY },
   });
+  return data ? data : null;
+};
+
+type FetchMovieCredits = (
+  personID: string | number
+) => Promise<MovieCreditsReturn>;
+
+export const fetchMovieCredits: FetchMovieCredits = async (personID) => {
+  const { data } = await axios.get(
+    `${BASE_URL}${PERSON_URL}/${personID}/movie_credits`,
+    {
+      params: { api_key: API_KEY },
+    }
+  );
   return data ? data : null;
 };

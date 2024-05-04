@@ -56,3 +56,15 @@ export interface MovieDetail extends MovieRoot {
   status: string;
   tagline: string;
 }
+
+export interface MovieCastCredit extends Movie {
+  character: string;
+  credit_id: string;
+  order: number;
+}
+
+export interface MovieCrewCredit extends Movie {
+  credit_id: string;
+  department: string;
+  job: string;
+}
