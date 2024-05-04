@@ -15,7 +15,7 @@ const imgUrl = IMAGE_URL + "/" + resulation;
 
 const CastMovieCard = ({ movie }: CastMovieCardProps) => {
   return (
-    <div className="flex gap-2 cursor-pointer p-2 rounded-lg group hover:bg-accent/20 duration-200 ">
+    <div className="flex gap-2 cursor-pointer p-4 rounded-lg group hover:bg-accent/20 duration-200 ">
       <div className="w-[50px] h-[75px]">
         {movie.poster_path ? (
           <img
