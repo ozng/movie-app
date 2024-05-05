@@ -36,3 +36,8 @@ export type VideoReturnType = {
   id: number;
   results: VideosType;
 };
+
+export interface PeopleImagesReturnType {
+  id: number;
+  profiles: BackdropType[];
+}

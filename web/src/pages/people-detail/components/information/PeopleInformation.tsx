@@ -2,6 +2,7 @@ import Name from "./Name";
 import BirtdayAndPlace from "./BirtdayAndPlace";
 import Biography from "./Biography";
 import PeopleMovies from "../PeopleMovies";
+import Images from "./Images";
 
 const PeopleInformation = () => {
   return (
@@ -11,6 +12,7 @@ const PeopleInformation = () => {
         <BirtdayAndPlace />
       </div>
       <Biography />
+      <Images />
       <PeopleMovies />
     </div>
   );

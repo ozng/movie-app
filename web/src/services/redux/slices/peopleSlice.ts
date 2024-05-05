@@ -1,11 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
   fetchCastAndCrewsFromSelectedMovie,
+  fetchImages,
   fetchPeopleDetails,
   fetchPeopleMovieCredits,
 } from "../actions/people";
 import { CastAndCrewReturnType } from "@/services/tmdb/people";
 import { MovieCreditsReturn, People } from "@/types/People";
+import { PeopleImagesReturnType } from "@/types/Media";
 
 interface PeopleState {
   selectedPeople: People | null;
@@ -16,6 +18,8 @@ interface PeopleState {
   showAllCast: boolean;
   movies: MovieCreditsReturn | null;
   loadingMovies: boolean;
+  images: PeopleImagesReturnType | null;
+  loadingImages: boolean;
 }
 
 const initialState: PeopleState = {
@@ -27,6 +31,8 @@ const initialState: PeopleState = {
   showAllCast: false,
   movies: null,
   loadingMovies: false,
+  images: null,
+  loadingImages: false,
 };
 
 const maxCastLength = 8;
@@ -110,6 +116,17 @@ export const peopleSlice = createSlice({
         }
       });
       state.movies = action.payload;
+    });
+    // Images
+    builder.addCase(fetchImages.pending, (state) => {
+      state.loadingImages = true;
+    });
+    builder.addCase(fetchImages.rejected, (state) => {
+      state.loadingImages = false;
+    });
+    builder.addCase(fetchImages.fulfilled, (state, action) => {
+      state.loadingImages = false;
+      state.images = action.payload;
     });
   },
 });
