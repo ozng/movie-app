@@ -3,6 +3,7 @@ import {
   fetchMovieCredits,
   fetchPeopleDetail,
   fetchPeopleImages,
+  fetchPeopleTaggedImages,
 } from "@/services/tmdb/people";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
@@ -34,6 +35,14 @@ export const fetchImages = createAsyncThunk(
   "people/fetchImages",
   async (personId: string | number) => {
     const response = await fetchPeopleImages(personId);
+    return response;
+  }
+);
+
+export const fetchTaggedImages = createAsyncThunk(
+  "people/fetchTaggedImages",
+  async (personId: string | number) => {
+    const response = await fetchPeopleTaggedImages(personId);
     return response;
   }
 );

@@ -4,10 +4,14 @@ import {
   fetchImages,
   fetchPeopleDetails,
   fetchPeopleMovieCredits,
+  fetchTaggedImages,
 } from "../actions/people";
 import { CastAndCrewReturnType } from "@/services/tmdb/people";
 import { MovieCreditsReturn, People } from "@/types/People";
-import { PeopleImagesReturnType } from "@/types/Media";
+import {
+  PeopleImagesReturnType,
+  PeopleTaggedImageReturnType,
+} from "@/types/Media";
 
 interface PeopleState {
   selectedPeople: People | null;
@@ -20,6 +24,8 @@ interface PeopleState {
   loadingMovies: boolean;
   images: PeopleImagesReturnType | null;
   loadingImages: boolean;
+  taggedImages: PeopleTaggedImageReturnType | null;
+  loadingTaggedImages: boolean;
 }
 
 const initialState: PeopleState = {
@@ -33,6 +39,8 @@ const initialState: PeopleState = {
   loadingMovies: false,
   images: null,
   loadingImages: false,
+  taggedImages: null,
+  loadingTaggedImages: false,
 };
 
 const maxCastLength = 8;
@@ -127,6 +135,17 @@ export const peopleSlice = createSlice({
     builder.addCase(fetchImages.fulfilled, (state, action) => {
       state.loadingImages = false;
       state.images = action.payload;
+    });
+    // Tagged Images
+    builder.addCase(fetchTaggedImages.pending, (state) => {
+      state.loadingTaggedImages = true;
+    });
+    builder.addCase(fetchTaggedImages.rejected, (state) => {
+      state.loadingTaggedImages = false;
+    });
+    builder.addCase(fetchTaggedImages.fulfilled, (state, action) => {
+      state.loadingTaggedImages = false;
+      state.taggedImages = action.payload;
     });
   },
 });

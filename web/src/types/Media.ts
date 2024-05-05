@@ -1,3 +1,5 @@
+import { Movie } from "./Movie";
+
 export type ImageReturnType = {
   id: number;
   backdrops: BackdropType[];
@@ -40,4 +42,23 @@ export type VideoReturnType = {
 export interface PeopleImagesReturnType {
   id: number;
   profiles: BackdropType[];
+}
+
+interface TaggedImageMediaType extends Movie {
+  media_type: string;
+}
+
+export interface TaggedImageType extends BackdropType {
+  id: string;
+  image_type: string;
+  media_type: string;
+  media: TaggedImageMediaType;
+}
+
+export interface PeopleTaggedImageReturnType {
+  id: number;
+  page: number;
+  results: TaggedImageType[];
+  total_pages: number;
+  total_results: number;
 }

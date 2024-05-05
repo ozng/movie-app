@@ -1,5 +1,8 @@
 import { API_KEY, BASE_URL, MOVIE_URL, PERSON_URL } from "@/constants/tmdb";
-import { PeopleImagesReturnType } from "@/types/Media";
+import {
+  PeopleImagesReturnType,
+  PeopleTaggedImageReturnType,
+} from "@/types/Media";
 import { Cast, Crew, MovieCreditsReturn, People } from "@/types/People";
 import axios from "axios";
 
@@ -52,6 +55,22 @@ type FetchPeopleImages = (
 export const fetchPeopleImages: FetchPeopleImages = async (personID) => {
   const { data } = await axios.get(
     `${BASE_URL}${PERSON_URL}/${personID}/images`,
+    {
+      params: { api_key: API_KEY },
+    }
+  );
+  return data ? data : null;
+};
+
+type FetchPeopleTaggedImages = (
+  personID: string | number
+) => Promise<PeopleTaggedImageReturnType>;
+
+export const fetchPeopleTaggedImages: FetchPeopleTaggedImages = async (
+  personID
+) => {
+  const { data } = await axios.get(
+    `${BASE_URL}${PERSON_URL}/${personID}/tagged_images`,
     {
       params: { api_key: API_KEY },
     }
