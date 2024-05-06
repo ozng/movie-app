@@ -2,6 +2,7 @@ import RootLayout from "@/layouts/RootLayout";
 import Home from "@/pages/home/Home";
 import Detail from "@/pages/movie-tv-detail/Detail";
 import PeopleDetail from "@/pages/people-detail/PeopleDetail";
+import Search from "@/pages/search/Search";
 import { Route, Routes } from "react-router-dom";
 
 const RootNavigation = () => {
@@ -28,6 +29,14 @@ const RootNavigation = () => {
         element={
           <RootLayout>
             <PeopleDetail />
+          </RootLayout>
+        }
+      />
+      <Route
+        path="/search"
+        element={
+          <RootLayout>
+            <Search />
           </RootLayout>
         }
       />

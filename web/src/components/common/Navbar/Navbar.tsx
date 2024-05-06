@@ -1,5 +1,5 @@
 import NavbarLogo from "./components/NavbarLogo";
-import UserAvatar from "./components/UserAvatar";
+// import UserAvatar from "./components/UserAvatar";
 import Links from "./components/Links";
 
 const Navbar = () => {
@@ -15,7 +15,7 @@ const Navbar = () => {
         </div>
         <div className="flex gap-16 items-center">
           <Links />
-          <UserAvatar />
+          {/* <UserAvatar /> */}
         </div>
       </div>
     </nav>

@@ -10,8 +10,6 @@ type TrailerListProps = {
 const TrailerList = ({ videos }: TrailerListProps) => {
   const [selectedTrailer, setSelectedTrailer] = useState(0);
 
-  console.log(videos);
-
   type ChangeTrailerHandlerType = (type: "next" | "prev") => void;
   const changeTrailerHandler: ChangeTrailerHandlerType = (type) => {
     const payload = type === "next" ? 1 : -1;

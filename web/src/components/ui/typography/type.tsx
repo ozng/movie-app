@@ -31,6 +31,7 @@ const typeVariants = cva("inline-block", {
       md: "font-medium",
       semibold: "font-semibold",
       bold: "font-bold",
+      light: "font-light",
     },
   },
   defaultVariants: {

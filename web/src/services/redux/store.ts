@@ -3,12 +3,14 @@ import movieSlice from "./slices/movieSlice";
 import { useDispatch } from "react-redux";
 import peopleSlice from "./slices/peopleSlice";
 import mediaSlice from "./slices/mediaSlice";
+import searchSlice from "./slices/searchSlice";
 
 export const store = configureStore({
   reducer: {
     movie: movieSlice,
     people: peopleSlice,
     media: mediaSlice,
+    search: searchSlice,
   },
 });
 

@@ -28,10 +28,14 @@ export const fetchCastAndCrews: FetchCastAndCrew = async (movieID) => {
 type FetchPeopleDetail = (personID: string | number) => Promise<People>;
 
 export const fetchPeopleDetail: FetchPeopleDetail = async (personID) => {
-  const { data } = await axios.get(`${BASE_URL}${PERSON_URL}/${personID}`, {
-    params: { api_key: API_KEY },
-  });
-  return data ? data : null;
+  try {
+    const { data } = await axios.get(`${BASE_URL}${PERSON_URL}/${personID}`, {
+      params: { api_key: API_KEY },
+    });
+    return data ? data : null;
+  } catch (error) {
+    throw new Error("Error occurred");
+  }
 };
 
 type FetchMovieCredits = (
