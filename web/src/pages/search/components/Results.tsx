@@ -2,20 +2,26 @@ import VerticalMovieTVList from "@/components/VerticalMovieTVList";
 import { Type } from "@/components/ui/typography/type";
 import { RootState } from "@/services/redux/store";
 import { useSelector } from "react-redux";
+import SearchPaginate from "./SearchPaginate";
 
 const Results = () => {
   const { results, loading } = useSelector((state: RootState) => state.search);
 
   return (
-    <div>
+    <div className="h-full">
       {loading ? (
-        <div className="w-full h-full flex justify-center items-center">
-          <Type className="animate-pulse">Loading</Type>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <Type className="animate-pulse" variant={"accent"}>
+            Loading
+          </Type>
         </div>
       ) : (
         <div>
           {results && results.results && results.results.length > 0 ? (
-            <VerticalMovieTVList movie={results.results} />
+            <div className="space-y-12">
+              <VerticalMovieTVList movie={results.results} />
+              <SearchPaginate />
+            </div>
           ) : null}
         </div>
       )}
