@@ -64,7 +64,7 @@ const ImageList = ({ size = "w300", list, title }: ImageListProps) => {
                 <img
                   src={IMAGE_URL + "/" + size + item.file_path}
                   alt=""
-                  className="w-72"
+                  className="max-w-72 max-h-60 object-cover"
                 />
                 <div className="flex opacity-0 group-hover:opacity-100 bg-black/50 duration-300 w-full h-full justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                   <FaSearchPlus color="white" size={24} />
@@ -73,7 +73,7 @@ const ImageList = ({ size = "w300", list, title }: ImageListProps) => {
             ))}
           </div>
         </div>
-        <div className="rounded-md group absolute top-1/2 transform -translate-y-1/2 left-0 ">
+        <div className="rounded-md group absolute top-1/2 transform -translate-y-1/2 -left-8 ">
           <Button
             variant={"outline"}
             onClick={() => scrollHandler("left", listRef)}
@@ -81,7 +81,7 @@ const ImageList = ({ size = "w300", list, title }: ImageListProps) => {
             <FaAngleLeft size={21} />
           </Button>
         </div>
-        <div className="rounded-md group absolute top-1/2 transform -translate-y-1/2 right-0">
+        <div className="rounded-md group absolute top-1/2 transform -translate-y-1/2 -right-8">
           <Button
             variant={"outline"}
             onClick={() => scrollHandler("right", listRef)}

@@ -72,6 +72,8 @@ export const peopleSlice = createSlice({
       state.selectedPeople = null;
       state.loadingSelectedPeople = false;
       state.movies = null;
+      state.taggedImages = null;
+      state.images = null;
     },
   },
   extraReducers: (builder) => {
