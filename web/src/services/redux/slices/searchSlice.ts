@@ -16,7 +16,7 @@ const searchSlice = createSlice({
   name: "search",
   initialState,
   reducers: {
-    reset: (state) => {
+    resetSearchResults: (state) => {
       state.loading = false;
       state.results = null;
     },
@@ -36,6 +36,6 @@ const searchSlice = createSlice({
   },
 });
 
-export const { reset } = searchSlice.actions;
+export const { resetSearchResults } = searchSlice.actions;
 
 export default searchSlice.reducer;

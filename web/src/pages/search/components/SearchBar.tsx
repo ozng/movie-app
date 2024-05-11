@@ -1,11 +1,26 @@
 import { fetchSearchResults } from "@/services/redux/actions/search";
+import { resetSearchResults } from "@/services/redux/slices/searchSlice";
 import { useAppDispatch } from "@/services/redux/store";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { FaSearch } from "react-icons/fa";
+import { useSearchParams } from "react-router-dom";
 
 const SearchBar = () => {
   const searchRef = useRef<HTMLInputElement>(null);
   const dispatch = useAppDispatch();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  useEffect(() => {
+    const movie = searchParams.get("movie");
+    const page = searchParams.get("page");
+    if (movie && page) {
+      dispatch(fetchSearchResults({ movieName: movie, page: +page }));
+    }
+
+    return () => {
+      dispatch(resetSearchResults());
+    };
+  }, [searchParams, dispatch]);
 
   return (
     <form
@@ -13,7 +28,11 @@ const SearchBar = () => {
       onSubmit={(e) => {
         e.preventDefault();
         if (searchRef?.current?.value) {
-          dispatch(fetchSearchResults(searchRef.current.value));
+          setSearchParams((prev) => ({
+            ...prev,
+            movie: searchRef.current?.value,
+            page: 1,
+          }));
         }
       }}
     >

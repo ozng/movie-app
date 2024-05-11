@@ -4,18 +4,20 @@ import axios from "axios";
 
 const url = BASE_URL + SEARCH_URL;
 
-type SearchMoviesType = (movieName: string) => Promise<SearchReturnType>;
+type SearchMoviesType = (
+  movieName: string,
+  page: number
+) => Promise<SearchReturnType>;
 
-export const searchMovies: SearchMoviesType = async (movieName) => {
+export const searchMovies: SearchMoviesType = async (movieName, page) => {
   try {
     const { data } = await axios.get(`${url}/movie`, {
       params: {
         api_key: API_KEY,
         query: movieName,
+        page: page,
       },
     });
-
-    console.log(data);
 
     return data ? data : null;
   } catch (error) {

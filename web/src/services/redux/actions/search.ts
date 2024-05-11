@@ -3,8 +3,8 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchSearchResults = createAsyncThunk(
   "search/fetchSearchResults",
-  async (movieName: string) => {
-    const response = await searchMovies(movieName);
+  async ({ movieName, page }: { movieName: string; page: number }) => {
+    const response = await searchMovies(movieName, page);
     return response;
   }
 );
