@@ -7,7 +7,7 @@ const Overview = () => {
 
   return (
     <div className="bg-faded-1/20 p-4 rounded-sm">
-      <Type size={"sm"}>{movieDetail?.overview}</Type>
+      <Type variant={"overview"}>{movieDetail?.overview}</Type>
     </div>
   );
 };

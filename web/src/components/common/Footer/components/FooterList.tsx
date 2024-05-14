@@ -10,7 +10,7 @@ type FooterListProps = {
 const FooterList = ({ title, list }: FooterListProps) => {
   return (
     <div>
-      <Title thickness={"semibold"} className="mb-2">
+      <Title variant={"h4"} className="mb-2">
         {title}
       </Title>
       <ul className="flex flex-col gap-1">

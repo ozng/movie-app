@@ -52,10 +52,8 @@ const Cast = () => {
                     )}
 
                     <div className="flex flex-col justify-between">
-                      <Type size={"sm"} thickness={"bold"}>
-                        {item.name}
-                      </Type>
-                      <Type size={"xs"} variant={"fade-1"}>
+                      <Type>{item.name}</Type>
+                      <Type variant={"xs"} textColor={"fade-1"}>
                         {item.known_for_department}
                       </Type>
                     </div>
@@ -87,10 +85,8 @@ const Cast = () => {
                 )}
 
                 <div className="flex flex-col justify-between">
-                  <Type size={"sm"} thickness={"bold"}>
-                    {item.name}
-                  </Type>
-                  <Type size={"xs"} variant={"fade-1"}>
+                  <Type>{item.name}</Type>
+                  <Type variant={"xs"} textColor={"fade-1"}>
                     {item.character}
                   </Type>
                 </div>

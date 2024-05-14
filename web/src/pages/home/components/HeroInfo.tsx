@@ -12,27 +12,25 @@ type HeroInfoProps = {
 const HeroInfo = ({ selectedMovie }: HeroInfoProps) => {
   return (
     <div className="pt-32 px-24 w-[45%] flex flex-col gap-4">
-      <Title size={"6xl"} thickness={"semibold"} variant={"light"}>
+      <Title variant={"h1"} textColor={"light"}>
         {selectedMovie?.title}
       </Title>
       <div className="flex gap-2 text-faded-1 text-sm">
-        <Type variant={"accent"} thickness={"semibold"}>
-          TMDB
-        </Type>
-        <Type variant={"light"} thickness={"semibold"}>
+        <Type textColor={"accent"}>TMDB</Type>
+        <Type textColor={"fade-2"}>
           {selectedMovie?.vote_average.toFixed(1)}
         </Type>
-        <Type variant={"fade-2"}>({selectedMovie?.vote_count})</Type>
+        <Type textColor={"fade-2"}>({selectedMovie?.vote_count})</Type>
         <Type>|</Type>
-        <Type variant={"light"}>
+        <Type textColor={"fade-2"}>
           {moment(selectedMovie?.release_date).format("YYYY")}
         </Type>
         <Type>|</Type>
-        <Type variant={"light"}>
+        <Type textColor={"fade-2"}>
           {selectedMovie?.original_language.toUpperCase()}
         </Type>
       </div>
-      <Type variant={"light"} className="line-clamp-3">
+      <Type variant={"overview"} textColor={"light"} className="line-clamp-3">
         {selectedMovie?.overview}
       </Type>
       <div className="flex gap-6">

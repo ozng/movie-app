@@ -16,7 +16,7 @@ const ProductionCompanies = () => {
           {item.logo_path ? (
             <img src={profileURL + item.logo_path} alt="company logo" />
           ) : (
-            <Type size={"sm"} className="text-center" thickness={"semibold"}>
+            <Type size={"sm"} className="text-center">
               {item.name}
             </Type>
           )}

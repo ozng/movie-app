@@ -6,6 +6,7 @@ import { IoIosStar } from "react-icons/io";
 import { formatNumber } from "@/utils/format";
 import moment from "moment";
 import { Link } from "react-router-dom";
+import { Title } from "../ui/typography/title";
 
 type CastMovieCardProps = {
   movie: MovieCastCredit;
@@ -33,14 +34,12 @@ const CastMovieCard = ({ movie }: CastMovieCardProps) => {
       </div>
       <div className="flex justify-between flex-1">
         <div>
-          <Type thickness={"bold"}>{movie.title}</Type>
+          <Title variant={"h4"}>{movie.title}</Title>
           <div className="flex items-center gap-2">
             <IoIosStar className="text-accent" size={16} />
             <div className="flex items-center gap-1">
-              <Type variant={"fade-2"}>{movie.vote_average.toFixed(1)}</Type>
-              <Type variant={"fade-2"} size={"xs"}>
-                ({formatNumber(movie.vote_count)})
-              </Type>
+              <Type>{movie.vote_average.toFixed(1)}</Type>
+              <Type size={"xs"}>({formatNumber(movie.vote_count)})</Type>
             </div>
           </div>
           <Type>{movie.character}</Type>

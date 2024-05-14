@@ -73,7 +73,7 @@ const ImageModal = ({
           </Button>
         </div>
         <div className=" absolute left-1/2 transform -translate-x-1/2 bottom-2 bg-light-title dark:bg-dark-title py-2 px-6 rounded-md">
-          <Type variant={"light"}>
+          <Type textColor={"light"}>
             {current}/{total}
           </Type>
         </div>

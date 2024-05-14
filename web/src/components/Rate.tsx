@@ -17,13 +17,9 @@ const Rate = ({ avarage = 1, count = 1 }: RateProps) => {
         ))}
       </div>
       <div className="flex items-center gap-1">
-        <Type size={"xl"} thickness={"semibold"}>
-          {avarage.toFixed(1)}
-        </Type>
+        <Type variant={"xl"}>{avarage.toFixed(1)}</Type>
 
-        <Type size={"xs"} variant={"fade-1"}>
-          ({count})
-        </Type>
+        <Type variant={"xs"}>({count})</Type>
       </div>
     </div>
   );

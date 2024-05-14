@@ -17,9 +17,7 @@ const HorizontalMovieTVList = ({ title, list }: HorizontalMovieTVListProps) => {
   return (
     <div className="flex flex-col">
       <div className="flex items-center gap-4">
-        <Title size={"xl"} thickness={"semibold"} className="tracking-tight">
-          {title}
-        </Title>
+        <Title variant={"h2"}>{title}</Title>
         <div className="flex gap-4 ">
           <div className="rounded-md group">
             <Button

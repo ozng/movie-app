@@ -8,7 +8,7 @@ const Categories = () => {
   return (
     <div className="flex gap-4">
       {movieDetail?.genres.map((item) => (
-        <Type key={item.id} variant={"fade-2"} size={"sm"}>
+        <Type key={item.id} textColor={"fade-2"} size={"sm"}>
           {item.name}
         </Type>
       ))}

@@ -8,12 +8,12 @@ const BirtdayAndPlace = () => {
 
   return (
     <div className="flex flex-col">
-      <Type variant={"fade-2"}>{selectedPeople?.place_of_birth}</Type>
-      <Type variant={"fade-1"}>
+      <Type textColor={"fade-2"}>{selectedPeople?.place_of_birth}</Type>
+      <Type textColor={"fade-1"}>
         {moment(selectedPeople?.birthday).format("D MMMM YYYY")}
       </Type>
       {selectedPeople?.deathday ? (
-        <Type variant={"fade-1"}>
+        <Type textColor={"fade-1"}>
           {moment(selectedPeople.deathday).format("D MMMM YYYY")}
         </Type>
       ) : null}

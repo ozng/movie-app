@@ -6,6 +6,7 @@ import { IoIosStar } from "react-icons/io";
 import { formatNumber } from "@/utils/format";
 import moment from "moment";
 import { Link } from "react-router-dom";
+import { Title } from "../ui/typography/title";
 
 type VerticalMovieTvCardProps = {
   movie: Movie;
@@ -30,16 +31,12 @@ const VerticalMovieTvCard = ({ movie }: VerticalMovieTvCardProps) => {
         <div className="flex justify-between items-center flex-1">
           <div>
             <Link to={`/detail/${movie.id}`}>
-              <Type
-                size={"lg"}
-                thickness={"semibold"}
-                className="hover:underline"
-              >
+              <Title variant={"h3"} className="hover:underline">
                 {movie.title}
-              </Type>
+              </Title>
             </Link>
             <div>
-              <Type thickness={"bold"} size={"xs"} variant={"fade-1"}>
+              <Type variant={"xs"} textColor={"fade-1"}>
                 {moment(movie.release_date).format("YYYY")}
               </Type>
             </div>
@@ -47,16 +44,14 @@ const VerticalMovieTvCard = ({ movie }: VerticalMovieTvCardProps) => {
           <div className="flex items-start justify-end gap-2 text-faded-2 text-sm font-semibold col-span-1">
             <div className="flex items-center gap-2">
               <IoIosStar className="text-accent" size={24} />
-              <Type size={"xl"}>{movie.vote_average.toFixed(1)}</Type>
-              <Type size={"xs"}>({formatNumber(movie.vote_count)})</Type>
+              <Type variant={"xl"}>{movie.vote_average.toFixed(1)}</Type>
+              <Type variant={"xs"}>({formatNumber(movie.vote_count)})</Type>
             </div>
           </div>
         </div>
 
         <div className="w-5/6">
-          <Type size={"sm"} className="text-justify">
-            {movie.overview}
-          </Type>
+          <Type variant={"overview"}>{movie.overview}</Type>
         </div>
       </div>
     </div>

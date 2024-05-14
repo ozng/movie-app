@@ -12,22 +12,22 @@ const TitleDateRate = () => {
   return (
     <div className="flex justify-between items-center">
       <div>
-        <Title size={"2xl"} thickness={"bold"}>
-          {movieDetail?.title}
-        </Title>
+        <Title variant={"h2"}>{movieDetail?.title}</Title>
         {movieDetail?.title !== movieDetail?.original_title ? (
-          <Title variant={"fade-1"}>{movieDetail?.original_title}</Title>
+          <Title variant={"h4"} textColor={"fade-1"}>
+            {movieDetail?.original_title}
+          </Title>
         ) : null}
         <div className="flex">
           {movieDetail?.release_date ? (
             <div className="space-x-2">
-              <Type size={"sm"} variant={"fade-1"}>
+              <Type size={"sm"} textColor={"fade-1"}>
                 {moment(movieDetail.release_date).format("D MMMM YYYY")}
               </Type>
-              <Type size={"default"} variant={"fade-1"}>
+              <Type size={"default"} textColor={"fade-1"}>
                 |
               </Type>
-              <Type size={"sm"} variant={"fade-1"}>
+              <Type size={"sm"} textColor={"fade-1"}>
                 {convertMinutesToHour(movieDetail.runtime)}
               </Type>
             </div>

@@ -3,16 +3,15 @@ import { Slot } from "@radix-ui/react-slot";
 import { type VariantProps, cva } from "class-variance-authority";
 import React from "react";
 
-const titleVariants = cva("", {
+const titleVariants = cva("text-light-title dark:text-dark-title", {
   variants: {
     variant: {
-      default: "text-light-title dark:text-dark-title",
-      light: "text-dark-title dark:text-light-title",
-      "fade-1": "text-faded-1",
-      "fade-2": "text-faded-2",
-      "fade-3": "text-faded-3",
-      accent: "text-accent",
-      link: "cursor-pointer hover:underline hover:underline-offset-1 hover:text-accent duration-100",
+      default: "",
+      h1: "text-6xl font-semibold",
+      h2: "text-2xl font-bold",
+      h3: "text-xl font-semibold tracking-tight",
+      h4: "font-semibold tracking-tight",
+      h5: "text-sm font-semibold tracking-tight",
     },
     size: {
       default: "",
@@ -25,6 +24,14 @@ const titleVariants = cva("", {
       "4xl": "text-4xl",
       "5xl": "text-5xl",
       "6xl": "text-6xl",
+    },
+    textColor: {
+      light: "text-dark-title dark:text-light-title",
+      dark: "text-light-title dark:text-dark-title",
+      accent: "text-accent",
+      "fade-1": "text-faded-1",
+      "fade-2": "text-faded-2",
+      "fade-3": "text-faded-3",
     },
     thickness: {
       default: "",
@@ -54,6 +61,7 @@ const Title = React.forwardRef<HTMLHeadingElement, TitleProps>(
       variant,
       size,
       thickness,
+      textColor,
       element = "h2",
       asChild = false,
       ...props
@@ -63,7 +71,9 @@ const Title = React.forwardRef<HTMLHeadingElement, TitleProps>(
     const Comp = asChild ? Slot : element;
     return (
       <Comp
-        className={cn(titleVariants({ variant, thickness, size, className }))}
+        className={cn(
+          titleVariants({ variant, thickness, size, textColor, className })
+        )}
         ref={ref}
         {...props}
       />
@@ -72,4 +82,4 @@ const Title = React.forwardRef<HTMLHeadingElement, TitleProps>(
 );
 Title.displayName = "Title";
 
-export { Title, titleVariants };
+export { Title };

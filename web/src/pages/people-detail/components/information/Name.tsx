@@ -5,11 +5,7 @@ import { useSelector } from "react-redux";
 const Name = () => {
   const { selectedPeople } = useSelector((state: RootState) => state.people);
 
-  return (
-    <Title size={"2xl"} thickness={"bold"}>
-      {selectedPeople?.name}
-    </Title>
-  );
+  return <Title variant={"h2"}>{selectedPeople?.name}</Title>;
 };
 
 export default Name;

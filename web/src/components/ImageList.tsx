@@ -6,8 +6,8 @@ import { scrollHandler } from "@/utils/scroll";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 import { FaSearchPlus } from "react-icons/fa";
 import { useRef, useState } from "react";
-import { Type } from "./ui/typography/type";
 import ImageModal from "./modals/ImageModal";
+import { Title } from "./ui/typography/title";
 
 type ImageListProps = {
   size?: BackdropSizes;
@@ -48,7 +48,7 @@ const ImageList = ({ size = "w300", list, title }: ImageListProps) => {
 
       <div className="space-y-4 relative">
         <div className="flex items-center gap-4">
-          {title ? <Type thickness={"bold"}>{title}</Type> : null}
+          {title ? <Title variant={"h4"}>{title}</Title> : null}
         </div>
         <div className="overflow-scroll no-scrollbar" ref={listRef}>
           <div className="flex gap-6 w-max py-6 px-4">
