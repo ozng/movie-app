@@ -30,7 +30,7 @@ const HorizontalMovieTVCard = ({ movieOrTV }: HorizontalMovieTVCardProps) => {
 
       <div className="grid grid-cols-4 gap-2">
         <div className="col-span-3">
-          <Title variant={"h4"}>{movieOrTV.title}</Title>
+          <Title variant={"h5"}>{movieOrTV.title}</Title>
         </div>
         <div className="flex items-start justify-end gap-2 text-faded-2 text-sm font-semibold col-span-1">
           <div className="flex items-center gap-2">

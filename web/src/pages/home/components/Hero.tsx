@@ -27,7 +27,7 @@ const Hero = () => {
       setSelectedImageIndex((prevState) =>
         autoPlay("forward", nowPlaying.length - 1, prevState)
       );
-    }, 4000);
+    }, 8000);
 
     if (!isAutoPlaying) {
       clearInterval(startAutoPlay);

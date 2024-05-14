@@ -34,7 +34,7 @@ const CastMovieCard = ({ movie }: CastMovieCardProps) => {
       </div>
       <div className="flex justify-between flex-1">
         <div>
-          <Title variant={"h4"}>{movie.title}</Title>
+          <Title variant={"h5"}>{movie.title}</Title>
           <div className="flex items-center gap-2">
             <IoIosStar className="text-accent" size={16} />
             <div className="flex items-center gap-1">
