@@ -119,7 +119,7 @@ const SearchPaginate = () => {
                       return {
                         ...prev,
                         movie: movie,
-                        page: 1,
+                        page: results.total_pages,
                       };
                     })
                   }
