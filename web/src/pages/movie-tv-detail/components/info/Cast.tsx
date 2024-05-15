@@ -1,20 +1,15 @@
 import NoImage from "@/components/NoImage";
+import PeopleCard from "@/components/cards/PeopleCard";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Type } from "@/components/ui/typography/type";
-import { IMAGE_URL } from "@/constants/tmdb";
 import { hideCast, showCast } from "@/services/redux/slices/peopleSlice";
 import { RootState, useAppDispatch } from "@/services/redux/store";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa6";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-
-const resulation = "/w185";
-const profileURL = IMAGE_URL + resulation;
 
 const Cast = () => {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
   const { filteredMovieCredit, showAllCast } = useSelector(
     (state: RootState) => state.people
   );
@@ -36,28 +31,14 @@ const Cast = () => {
             <div className="grid grid-cols-4">
               {director.length > 0 ? (
                 director.map((item) => (
-                  <div
-                    key={item.credit_id}
-                    className="flex gap-2 cursor-pointer duration-150 hover:bg-accent/10 rounded-2xl p-2"
-                    onClick={() => navigate(`/people/detail/${item.id}`)}
-                  >
-                    {item.profile_path ? (
-                      <img
-                        src={profileURL + item.profile_path}
-                        alt="actor/actress"
-                        className="size-10 object-cover rounded-2xl"
-                      />
-                    ) : (
-                      <NoImage />
-                    )}
-
-                    <div className="flex flex-col justify-between">
-                      <Type>{item.name}</Type>
-                      <Type variant={"xs"} textColor={"fade-1"}>
-                        {item.known_for_department}
-                      </Type>
-                    </div>
-                  </div>
+                  <PeopleCard
+                    key={item.id}
+                    fadedText={item.known_for_department}
+                    peopleID={item.id}
+                    resulation="w185"
+                    title={item.name}
+                    imageURL={item.profile_path}
+                  />
                 ))
               ) : (
                 <NoImage />
@@ -69,28 +50,14 @@ const Cast = () => {
         <div className="space-y-6">
           <div className="grid grid-cols-4 gap-2">
             {filteredMovieCredit?.cast.map((item) => (
-              <div
+              <PeopleCard
                 key={item.credit_id}
-                className="flex gap-2 cursor-pointer duration-150 hover:bg-accent/10 rounded-2xl p-2"
-                onClick={() => navigate(`/people/detail/${item.id}`)}
-              >
-                {item.profile_path ? (
-                  <img
-                    src={profileURL + item.profile_path}
-                    alt="actor/actress"
-                    className="size-10 object-cover rounded-2xl"
-                  />
-                ) : (
-                  <NoImage />
-                )}
-
-                <div className="flex flex-col justify-between">
-                  <Type>{item.name}</Type>
-                  <Type variant={"xs"} textColor={"fade-1"}>
-                    {item.character}
-                  </Type>
-                </div>
-              </div>
+                fadedText={item.character}
+                peopleID={item.id}
+                resulation="w185"
+                title={item.name}
+                imageURL={item.profile_path}
+              />
             ))}
           </div>
           <Button
