@@ -2,10 +2,10 @@ import { IMAGE_URL } from "@/constants/tmdb";
 import { RootState } from "@/services/redux/store";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import HeroInfo from "./HeroInfo";
-import HeroMovieList from "./HeroMovieList";
 import { autoPlay } from "@/utils/autoPlayImages";
 import HeroSkeleton from "@/components/skeletons/HeroSkeleton";
+import HeroMovieList from "./HeroMovieList/HeroMovieList";
+import HeroInfo from "./HeroInfo/HeroInfo";
 
 export const resolution = "/original";
 
