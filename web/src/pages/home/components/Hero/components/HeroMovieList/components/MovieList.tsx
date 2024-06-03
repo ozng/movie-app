@@ -1,7 +1,7 @@
 import { RootState } from "@/services/redux/store";
 import { useSelector } from "react-redux";
-import { imageBase } from "../../Hero";
 import { HeroMovieListProps, PosterRefType } from "../HeroMovieList";
+import { posterSizes } from "@/constants/imageSizes";
 
 export interface MovieListProps
   extends PosterRefType,
@@ -29,7 +29,7 @@ const MovieList = ({
             key={item.id}
           >
             <img
-              src={imageBase + item.poster_path}
+              src={posterSizes.original + item.poster_path}
               alt="poster"
               className={
                 index === selectedImageIndex

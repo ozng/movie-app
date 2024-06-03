@@ -1,26 +1,12 @@
-import { useEffect } from "react";
-import {
-  fetchNowPlayingMovies,
-  fetchPopularMovies,
-  fetchTopRatedMovies,
-  fetchUpcomingMovies,
-} from "@/services/redux/actions/movies";
-import { useAppDispatch } from "@/services/redux/store";
-import PopularMovies from "./components/PopularMovies";
-import TopRatedMovies from "./components/TopRatedMovies";
-import UpcomingMovies from "./components/UpcomingMovies";
 import Container from "@/components/Container";
-import Hero from "./components/Hero";
+import Hero from "./components/Hero/Hero";
+import useHomeScreen from "./hooks/useHomeScreen";
+import PopularMovies from "./components/PopularMovies/PopularMovies";
+import TopRatedMovies from "./components/TopRatedMovies/TopRatedMovies";
+import UpcomingMovies from "./components/UpcomingMovies/UpcomingMovies";
 
 const Home = () => {
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(fetchNowPlayingMovies());
-    dispatch(fetchPopularMovies());
-    dispatch(fetchTopRatedMovies());
-    dispatch(fetchUpcomingMovies());
-  }, [dispatch]);
+  useHomeScreen();
 
   return (
     <div className="relative flex flex-col gap-12">
