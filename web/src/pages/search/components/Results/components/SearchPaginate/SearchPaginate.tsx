@@ -8,33 +8,10 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 import { maxPageNumberToShow } from "@/constants/pagination";
-import { RootState } from "@/services/redux/store";
-import { paginationHandler } from "@/utils/pagination";
-import { useEffect, useLayoutEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { useSearchParams } from "react-router-dom";
+import useSearchPaginate from "./hooks/useSearchPaginate";
 
 const SearchPaginate = () => {
-  const { results } = useSelector((state: RootState) => state.search);
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [pages, setPages] = useState([""]);
-
-  useLayoutEffect(() => {
-    const movieName = searchParams.get("movie");
-    if (movieName) {
-      document.title = `Search | ${movieName}`;
-    }
-
-    return () => {
-      document.title = "RMTV";
-    };
-  }, [searchParams]);
-
-  const page = searchParams.get("page");
-  useEffect(() => {
-    const arr = paginationHandler(Number(page), results!.total_pages);
-    setPages(arr);
-  }, [page, results]);
+  const { pages, setSearchParams, results, page } = useSearchPaginate();
 
   return (
     <Pagination>

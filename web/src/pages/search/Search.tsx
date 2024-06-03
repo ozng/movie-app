@@ -1,12 +1,10 @@
 import Container from "@/components/Container";
-import SearchBar from "./components/SearchBar";
-import Results from "./components/Results";
-import { useEffect } from "react";
+import SearchBar from "./components/SearchBar/SearchBar";
+import Results from "./components/Results/Results";
+import useSearch from "./hooks/useSearch";
 
 const Search = () => {
-  useEffect(() => {
-    document.title = "Search";
-  }, []);
+  useSearch();
 
   return (
     <div className="min-h-screen py-24">
