@@ -1,6 +1,6 @@
 import RootLayout from "@/layouts/RootLayout";
 import Home from "@/pages/home/Home";
-import Detail from "@/pages/movie-tv-detail/Detail";
+import Detail from "@/pages/movie-detail/Detail";
 import PeopleDetail from "@/pages/people-detail/PeopleDetail";
 import Search from "@/pages/search/Search";
 import { Route, Routes } from "react-router-dom";
