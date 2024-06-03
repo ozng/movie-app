@@ -1,8 +1,8 @@
-import Name from "./Name";
-import BirtdayAndPlace from "./BirtdayAndPlace";
-import Biography from "./Biography";
 import PeopleMovies from "../PeopleMovies";
-import Images from "./Images";
+import Biography from "./components/Biography/Biography";
+import BirtdayAndPlace from "./components/BirtdayAndPlace/BirtdayAndPlace";
+import Images from "./components/Images/Images";
+import Name from "./components/Name/Name";
 
 const PeopleInformation = () => {
   return (

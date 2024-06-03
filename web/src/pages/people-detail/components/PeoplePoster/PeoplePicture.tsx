@@ -1,5 +1,5 @@
-import Picture from "./Picture";
-import Links from "./Links";
+import Links from "./components/Links/Links";
+import Picture from "./components/Picture/Picture";
 
 const PeoplePicture = () => {
   return (

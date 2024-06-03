@@ -1,21 +1,9 @@
 import PeopleMovieCastList from "@/components/PeopleMovieCastList";
 import { Type } from "@/components/ui/typography/type";
-import { fetchPeopleMovieCredits } from "@/services/redux/actions/people";
-import { RootState, useAppDispatch } from "@/services/redux/store";
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import usePeoplePicture from "./PeoplePoster/hooks/usePeoplePicture";
 
 const PeopleMovies = () => {
-  const dispatch = useAppDispatch();
-  const { selectedPeople, movies } = useSelector(
-    (state: RootState) => state.people
-  );
-
-  useEffect(() => {
-    if (selectedPeople?.id) {
-      dispatch(fetchPeopleMovieCredits(selectedPeople.id));
-    }
-  }, [dispatch, selectedPeople?.id]);
+  const { movies } = usePeoplePicture();
 
   return (
     <div className="space-y-4">
