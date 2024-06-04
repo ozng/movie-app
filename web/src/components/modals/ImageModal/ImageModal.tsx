@@ -5,18 +5,18 @@ import {
   type PosterSizes,
 } from "@/types/ImageSizes";
 import { MdOutlineClose } from "react-icons/md";
-import { Button } from "../ui/button";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
-import { ChangeIndexHandler } from "../ImageList";
-import { Type } from "../ui/typography/type";
+import { Button } from "@/components/ui/button";
+import { Type } from "@/components/ui/typography/type";
 
 type ImageModalProps = {
   src: string | null;
   setFunc: React.Dispatch<React.SetStateAction<boolean>>;
   isOpen: boolean;
-  changeIndex: ChangeIndexHandler;
   total: number;
   current: number;
+  next: () => void;
+  prev: () => void;
 } & (
   | {
       type?: "backdrop";
@@ -38,7 +38,8 @@ const ImageModal = ({
   type = "backdrop",
   isOpen,
   setFunc,
-  changeIndex,
+  next,
+  prev,
   current,
   total,
 }: ImageModalProps) => {
@@ -63,12 +64,12 @@ const ImageModal = ({
           <MdOutlineClose size={32} color="white" />
         </div>
         <div className="rounded-md group absolute top-1/2 transform -translate-y-1/2 left-10">
-          <Button variant={"outline"} onClick={() => changeIndex("prev")}>
+          <Button variant={"outline"} onClick={prev}>
             <FaAngleLeft size={21} />
           </Button>
         </div>
         <div className="rounded-md group absolute top-1/2 transform -translate-y-1/2 right-10">
-          <Button variant={"outline"} onClick={() => changeIndex("next")}>
+          <Button variant={"outline"} onClick={next}>
             <FaAngleRight size={21} />
           </Button>
         </div>

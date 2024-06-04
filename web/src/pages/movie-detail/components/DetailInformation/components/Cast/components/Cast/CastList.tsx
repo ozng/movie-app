@@ -1,8 +1,8 @@
-import PeopleCard from "@/components/cards/PeopleCard";
 import { Button } from "@/components/ui/button";
 import { Type } from "@/components/ui/typography/type";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa6";
 import useCast from "../../hooks/useCast";
+import PeopleCard from "@/components/cards/PeopleCard/PeopleCard";
 
 const CastList = () => {
   const { handleShowAllCast, filteredMovieCredit, showAllCast } = useCast();

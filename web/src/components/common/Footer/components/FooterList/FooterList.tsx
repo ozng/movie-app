@@ -1,6 +1,6 @@
 import { footer } from "@/static/footer";
-import FooterListItem from "./FooterListItem";
 import { Title } from "@/components/ui/typography/title";
+import FooterListItem from "./FooterListItem";
 
 type FooterListProps = {
   title: string;

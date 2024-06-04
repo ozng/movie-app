@@ -1,4 +1,4 @@
-import AdultContentWarning from "@/components/AdultContentWarning";
+import AdultContentWarning from "@/components/featured/AdultContentWarning/AdultContentWarning";
 import { RootState } from "@/services/redux/store";
 import { useSelector } from "react-redux";
 

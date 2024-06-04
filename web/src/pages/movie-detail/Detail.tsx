@@ -1,4 +1,4 @@
-import Container from "@/components/Container";
+import Container from "@/components/featured/Container/Container";
 import useMovieDetail from "./hooks/useMovieDetail";
 import DetailPoster from "./components/DetailPoster/DetailPoster";
 import DetailInformation from "./components/DetailInformation/DetailInformation";

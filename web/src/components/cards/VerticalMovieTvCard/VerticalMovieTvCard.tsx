@@ -1,28 +1,22 @@
 import { Movie } from "@/types/Movie";
-import { Type } from "../ui/typography/type";
-import { IMAGE_URL } from "@/constants/tmdb";
-import { PosterSizes } from "@/types/ImageSizes";
+import { Type } from "../../ui/typography/type";
 import { IoIosStar } from "react-icons/io";
 import { formatNumber } from "@/utils/format";
 import moment from "moment";
 import { Link } from "react-router-dom";
-import { Title } from "../ui/typography/title";
+import { Title } from "../../ui/typography/title";
+import { posterSizes } from "@/constants/imageSizes";
 
 type VerticalMovieTvCardProps = {
   movie: Movie;
 };
-
-const resolution: PosterSizes = "w154";
 
 const VerticalMovieTvCard = ({ movie }: VerticalMovieTvCardProps) => {
   return (
     <div className="flex gap-4">
       <div className="">
         {movie.poster_path ? (
-          <img
-            src={`${IMAGE_URL}/${resolution}${movie.poster_path}`}
-            alt="poster"
-          />
+          <img src={`${posterSizes.w154}${movie.poster_path}`} alt="poster" />
         ) : (
           <div className={`w-[139px] bg-faded-1 h-[208px]`} />
         )}

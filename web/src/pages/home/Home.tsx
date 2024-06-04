@@ -1,4 +1,4 @@
-import Container from "@/components/Container";
+import Container from "@/components/featured/Container/Container";
 import Hero from "./components/Hero/Hero";
 import useHomeScreen from "./hooks/useHomeScreen";
 import PopularMovies from "./components/PopularMovies/PopularMovies";

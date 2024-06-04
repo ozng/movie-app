@@ -1,8 +1,8 @@
-import NoImage from "../NoImage";
-import { Type } from "../ui/typography/type";
 import { ProfileSizes } from "@/types/ImageSizes";
 import { IMAGE_URL } from "@/constants/tmdb";
 import { Link } from "react-router-dom";
+import NoImage from "@/components/featured/NoImage/NoImage";
+import { Type } from "@/components/ui/typography/type";
 
 type PeopleCardProps = {
   title: string;

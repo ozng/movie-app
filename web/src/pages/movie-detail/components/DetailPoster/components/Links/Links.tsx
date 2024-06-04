@@ -1,4 +1,4 @@
-import ExternalLink from "@/components/ExternalLink";
+import ExternalLink from "@/components/featured/ExternalLink/ExternalLink";
 import { RootState } from "@/services/redux/store";
 import { useSelector } from "react-redux";
 

@@ -1,4 +1,4 @@
-import HorizontalMovieTVList from "@/components/HorizontalMovieTVList";
+import HorizontalMovieTVList from "@/components/featured/HorizontalMovieTVList/HorizontalMovieTVList";
 import useSimilar from "./hooks/useSimilar";
 
 const Similar = () => {

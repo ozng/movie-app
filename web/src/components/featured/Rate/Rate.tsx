@@ -1,5 +1,5 @@
 import { IoIosStar } from "react-icons/io";
-import { Type } from "./ui/typography/type";
+import { Type } from "../../ui/typography/type";
 
 type RateProps = {
   avarage: number;

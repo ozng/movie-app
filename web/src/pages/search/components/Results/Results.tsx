@@ -1,8 +1,8 @@
-import VerticalMovieTVList from "@/components/VerticalMovieTVList";
 import { Type } from "@/components/ui/typography/type";
 import { RootState } from "@/services/redux/store";
 import { useSelector } from "react-redux";
 import SearchPaginate from "./components/SearchPaginate/SearchPaginate";
+import VerticalMovieTVList from "@/components/featured/VerticalMovieTVList/VerticalMovieTVList";
 
 const Results = () => {
   const { results, loading } = useSelector((state: RootState) => state.search);

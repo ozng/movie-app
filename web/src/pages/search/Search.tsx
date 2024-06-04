@@ -1,4 +1,4 @@
-import Container from "@/components/Container";
+import Container from "@/components/featured/Container/Container";
 import SearchBar from "./components/SearchBar/SearchBar";
 import Results from "./components/Results/Results";
 import useSearch from "./hooks/useSearch";

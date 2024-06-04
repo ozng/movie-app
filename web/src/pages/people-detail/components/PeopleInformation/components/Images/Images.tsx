@@ -1,4 +1,4 @@
-import ImageList from "@/components/ImageList";
+import ImageList from "@/components/featured/ImageList/ImageList";
 import useImages from "./hooks/useImages";
 
 const Images = () => {

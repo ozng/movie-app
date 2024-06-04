@@ -1,5 +1,5 @@
+import Logo from "@/components/common/Logo/Logo";
 import { Link } from "react-router-dom";
-import Logo from "../../Logo/Logo";
 
 const NavbarLogo = () => {
   return (

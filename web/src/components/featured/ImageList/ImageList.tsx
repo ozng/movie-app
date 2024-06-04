@@ -1,13 +1,15 @@
 import { IMAGE_URL } from "@/constants/tmdb";
 import { BackdropSizes } from "@/types/ImageSizes";
 import { BackdropType } from "@/types/Media";
-import { Button } from "./ui/button";
+import { Button } from "../../ui/button";
 import { scrollHandler } from "@/utils/scroll";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 import { FaSearchPlus } from "react-icons/fa";
-import { useRef, useState } from "react";
-import ImageModal from "./modals/ImageModal";
-import { Title } from "./ui/typography/title";
+import { useRef } from "react";
+import { Title } from "../../ui/typography/title";
+import ImageModal from "../../modals/ImageModal/ImageModal";
+import useImageList from "./hooks/useImageList";
+import { changeIndexHandler } from "./utils/changeImage";
 
 type ImageListProps = {
   size?: BackdropSizes;
@@ -15,23 +17,9 @@ type ImageListProps = {
   title?: string;
 };
 
-export type ChangeIndexHandler = (type: "next" | "prev") => void;
-
 const ImageList = ({ size = "w300", list, title }: ImageListProps) => {
   const listRef = useRef<HTMLDivElement>(null);
-  const [open, setIsOpen] = useState<boolean>(false);
-  const [selectedIndex, setSelectedIndex] = useState(0);
-
-  const changeIndexHandler: ChangeIndexHandler = (type) => {
-    const payload = type === "next" ? 1 : -1;
-    const min = 0;
-    const max = list.length - 1;
-    setSelectedIndex((prevState) => {
-      if (type === "prev" && prevState === min) return 0;
-      if (type === "next" && prevState === max) return max;
-      return prevState + payload;
-    });
-  };
+  const { setSelectedIndex, selectedIndex, open, setIsOpen } = useImageList();
 
   return list.length > 0 ? (
     <>
@@ -41,9 +29,10 @@ const ImageList = ({ size = "w300", list, title }: ImageListProps) => {
         size="original"
         setFunc={setIsOpen}
         isOpen={open}
-        changeIndex={changeIndexHandler}
         current={selectedIndex + 1}
         total={list.length}
+        next={() => changeIndexHandler("next", setSelectedIndex, list.length)}
+        prev={() => changeIndexHandler("prev", setSelectedIndex, list.length)}
       />
 
       <div className="space-y-4 relative">

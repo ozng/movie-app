@@ -1,19 +1,15 @@
-import { IMAGE_URL } from "@/constants/tmdb";
-import { type PosterSizes } from "@/types/ImageSizes";
 import { MovieCastCredit } from "@/types/Movie";
-import { Type } from "../ui/typography/type";
+import { Type } from "../../ui/typography/type";
 import { IoIosStar } from "react-icons/io";
 import { formatNumber } from "@/utils/format";
 import moment from "moment";
 import { Link } from "react-router-dom";
-import { Title } from "../ui/typography/title";
+import { Title } from "../../ui/typography/title";
+import { posterSizes } from "@/constants/imageSizes";
 
 type CastMovieCardProps = {
   movie: MovieCastCredit;
 };
-
-const resulation: PosterSizes = "w154";
-const imgUrl = IMAGE_URL + "/" + resulation;
 
 const CastMovieCard = ({ movie }: CastMovieCardProps) => {
   return (
@@ -24,7 +20,7 @@ const CastMovieCard = ({ movie }: CastMovieCardProps) => {
       <div className="w-[50px] h-[75px]">
         {movie.poster_path ? (
           <img
-            src={imgUrl + movie.poster_path}
+            src={posterSizes.w154 + movie.poster_path}
             alt="poster"
             className="w-full h-full"
           />

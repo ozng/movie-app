@@ -1,5 +1,5 @@
-import NavbarLogo from "./components/NavbarLogo";
-import Links from "./components/Links";
+import Links from "./components/Links/Links";
+import NavbarLogo from "./components/NavbarLogo/NavbarLogo";
 
 const Navbar = () => {
   return (

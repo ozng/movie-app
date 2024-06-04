@@ -1,6 +1,6 @@
-import ImageList from "@/components/ImageList";
-import TrailerList from "@/components/TrailerList";
+import TrailerList from "@/components/featured/TrailerList/TrailerList";
 import useMedia from "./hooks/useMedia";
+import ImageList from "@/components/featured/ImageList/ImageList";
 
 const Media = () => {
   const { photos, videos } = useMedia();

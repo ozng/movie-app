@@ -1,4 +1,4 @@
-import Rate from "@/components/Rate";
+import Rate from "@/components/featured/Rate/Rate";
 import { Title } from "@/components/ui/typography/title";
 import { Type } from "@/components/ui/typography/type";
 import { RootState } from "@/services/redux/store";

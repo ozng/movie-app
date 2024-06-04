@@ -1,5 +1,4 @@
-import { fetchVideos } from "@/services/redux/actions/media";
-import { fetchImages } from "@/services/redux/actions/people";
+import { fetchVideos, fetchImages } from "@/services/redux/actions/media";
 import { RootState, useAppDispatch } from "@/services/redux/store";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";

@@ -1,4 +1,4 @@
-import Container from "@/components/Container";
+import Container from "@/components/featured/Container/Container";
 import PeoplePicture from "./components/PeoplePoster/PeoplePicture";
 import PeopleInformation from "./components/PeopleInformation/PeopleInformation";
 import usePeopleDetail from "./hooks/usePeopleDetail";

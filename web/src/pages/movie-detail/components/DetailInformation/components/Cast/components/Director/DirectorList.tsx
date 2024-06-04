@@ -1,5 +1,5 @@
-import NoImage from "@/components/NoImage";
-import PeopleCard from "@/components/cards/PeopleCard";
+import NoImage from "@/components/featured/NoImage/NoImage";
+import PeopleCard from "@/components/cards/PeopleCard/PeopleCard";
 import { Crew } from "@/types/People";
 
 type DirectorListProps = {

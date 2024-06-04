@@ -1,5 +1,5 @@
+import CastMovieCard from "@/components/cards/CastMovieCard/CastMovieCard";
 import { MovieCastCredit } from "@/types/Movie";
-import CastMovieCard from "./cards/CastMovieCard";
 
 type PeopleMovieCastListProps = {
   castList: MovieCastCredit[];

@@ -1,6 +1,6 @@
-import PeopleMovieCastList from "@/components/PeopleMovieCastList";
 import { Type } from "@/components/ui/typography/type";
 import usePeoplePicture from "./PeoplePoster/hooks/usePeoplePicture";
+import PeopleMovieCastList from "@/components/featured/PeopleMovieCastList/PeopleMovieCastList";
 
 const PeopleMovies = () => {
   const { movies } = usePeoplePicture();

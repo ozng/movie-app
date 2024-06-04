@@ -1,18 +1,15 @@
-import { IMAGE_URL } from "@/constants/tmdb";
 import { IoIosStar } from "react-icons/io";
-import { Title } from "../ui/typography/title";
-import { Type } from "../ui/typography/type";
+import { Title } from "../../ui/typography/title";
+import { Type } from "../../ui/typography/type";
 import { Link } from "react-router-dom";
 import { Movie } from "@/types/Movie";
+import { posterSizes } from "@/constants/imageSizes";
 
 type HorizontalMovieTVCardProps = {
   movieOrTV: Movie;
 };
 
 const HorizontalMovieTVCard = ({ movieOrTV }: HorizontalMovieTVCardProps) => {
-  const resolution = "/w342";
-  const imageBase = IMAGE_URL + resolution;
-
   return (
     <Link
       to={`/detail/${movieOrTV.id}`}
@@ -20,7 +17,7 @@ const HorizontalMovieTVCard = ({ movieOrTV }: HorizontalMovieTVCardProps) => {
     >
       {movieOrTV.poster_path ? (
         <img
-          src={imageBase + movieOrTV.poster_path}
+          src={posterSizes.w342 + movieOrTV.poster_path}
           alt="poster"
           className="w-48 rounded-lg h-[288px]"
         />

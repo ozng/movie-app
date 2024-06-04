@@ -1,5 +1,5 @@
-import FooterList from "./components/FooterList";
 import { footer } from "@/static/footer";
+import FooterList from "./components/FooterList/FooterList";
 
 const Footer = () => {
   return (

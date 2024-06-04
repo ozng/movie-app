@@ -1,5 +1,5 @@
 import { Movie } from "@/types/Movie";
-import VerticalMovieTvCard from "./cards/VerticalMovieTvCard";
+import VerticalMovieTvCard from "../../cards/VerticalMovieTvCard/VerticalMovieTvCard";
 
 type VerticalMovieTVListProps = {
   movie: Movie[];

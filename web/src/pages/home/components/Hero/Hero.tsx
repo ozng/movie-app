@@ -1,4 +1,4 @@
-import HeroSkeleton from "@/components/skeletons/HeroSkeleton";
+import HeroSkeleton from "@/components/skeletons/HeroSkeleton/HeroSkeleton";
 import HeroInfo from "./components/HeroInfo/HeroInfo";
 import HeroMovieList from "./components/HeroMovieList/HeroMovieList";
 import useHero from "./hooks/useHero";

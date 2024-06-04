@@ -1,7 +1,8 @@
+import { Button } from "@/components/ui/button";
 import { VideosType } from "@/types/Media";
 import { useState } from "react";
-import { Button } from "./ui/button";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
+import { changeTrailerHandler } from "./utils/changeTrailer";
 
 type TrailerListProps = {
   videos: VideosType;
@@ -9,19 +10,6 @@ type TrailerListProps = {
 
 const TrailerList = ({ videos }: TrailerListProps) => {
   const [selectedTrailer, setSelectedTrailer] = useState(0);
-
-  type ChangeTrailerHandlerType = (type: "next" | "prev") => void;
-  const changeTrailerHandler: ChangeTrailerHandlerType = (type) => {
-    const payload = type === "next" ? 1 : -1;
-    const min = 0;
-    const max = videos.length - 1;
-
-    setSelectedTrailer((prevState) => {
-      if (type === "prev" && prevState === min) return min;
-      if (type === "next" && prevState === max) return max;
-      return prevState + payload;
-    });
-  };
 
   return (
     <div>
@@ -38,7 +26,9 @@ const TrailerList = ({ videos }: TrailerListProps) => {
         <div className="flex gap-4 items-center justify-center">
           <Button
             variant={"outline"}
-            onClick={() => changeTrailerHandler("prev")}
+            onClick={() =>
+              changeTrailerHandler("prev", videos.length, setSelectedTrailer)
+            }
           >
             <FaAngleLeft size={21} />
           </Button>
@@ -57,7 +47,9 @@ const TrailerList = ({ videos }: TrailerListProps) => {
             : null}
           <Button
             variant={"outline"}
-            onClick={() => changeTrailerHandler("next")}
+            onClick={() =>
+              changeTrailerHandler("next", videos.length, setSelectedTrailer)
+            }
           >
             <FaAngleRight size={21} />
           </Button>

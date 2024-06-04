@@ -1,4 +1,4 @@
-import HorizontalMovieTVList from "@/components/HorizontalMovieTVList";
+import HorizontalMovieTVList from "@/components/featured/HorizontalMovieTVList/HorizontalMovieTVList";
 import { fetchMoviesCollection } from "@/services/redux/actions/movies";
 import { RootState, useAppDispatch } from "@/services/redux/store";
 import { useEffect } from "react";
