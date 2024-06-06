@@ -4,14 +4,16 @@ export type ScrollHandler = (
 ) => void;
 
 export const scrollHandler: ScrollHandler = (direction, ref) => {
+  const pixel = 144;
+
   if (direction === "right") {
     ref.current?.scrollBy({
-      left: ref.current.offsetWidth - 144,
+      left: ref.current.offsetWidth - pixel,
       behavior: "smooth",
     });
   } else {
     ref.current?.scrollBy({
-      left: -ref.current.offsetWidth - 144,
+      left: -ref.current.offsetWidth - pixel,
       behavior: "smooth",
     });
   }
