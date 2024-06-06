@@ -1,13 +1,6 @@
-import { ImageReturnType, VideoReturnType } from "@/types/Media";
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchImages, fetchVideos } from "../actions/media";
-
-interface MediaState {
-  photos: ImageReturnType | null;
-  loadingPhotos: boolean;
-  videos: VideoReturnType | null;
-  loadingVideos: boolean;
-}
+import { MediaState } from "../types/Media";
 
 const initialState: MediaState = {
   photos: null,

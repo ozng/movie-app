@@ -1,11 +1,6 @@
-import { SearchReturnType } from "@/types/Search";
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchSearchResults } from "../actions/search";
-
-interface SearchState {
-  results: SearchReturnType | null;
-  loading: boolean;
-}
+import { SearchState } from "../types/Search";
 
 const initialState: SearchState = {
   results: null,

@@ -6,27 +6,7 @@ import {
   fetchPeopleMovieCredits,
   fetchTaggedImages,
 } from "../actions/people";
-import { CastAndCrewReturnType } from "@/services/tmdb/people";
-import { MovieCreditsReturn, People } from "@/types/People";
-import {
-  PeopleImagesReturnType,
-  PeopleTaggedImageReturnType,
-} from "@/types/Media";
-
-interface PeopleState {
-  selectedPeople: People | null;
-  loadingSelectedPeople: boolean;
-  selectedMovieCredit: CastAndCrewReturnType | null;
-  filteredMovieCredit: CastAndCrewReturnType | null;
-  loadingCastAndCrew: boolean;
-  showAllCast: boolean;
-  movies: MovieCreditsReturn | null;
-  loadingMovies: boolean;
-  images: PeopleImagesReturnType | null;
-  loadingImages: boolean;
-  taggedImages: PeopleTaggedImageReturnType | null;
-  loadingTaggedImages: boolean;
-}
+import { PeopleState } from "../types/People";
 
 const initialState: PeopleState = {
   selectedPeople: null,
