@@ -22,6 +22,16 @@ const usePeopleDetail = () => {
       dispatch(resetPeople());
     };
   }, [id, dispatch]);
+
+  useEffect(() => {
+    if (selectedPeople && selectedPeople.name) {
+      document.title = selectedPeople.name;
+    }
+
+    return () => {
+      document.title = "RMTV";
+    };
+  }, [selectedPeople]);
   return { selectedPeople };
 };
 
